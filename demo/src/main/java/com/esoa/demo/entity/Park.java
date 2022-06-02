@@ -1,15 +1,11 @@
 package com.esoa.demo.entity;
 
-import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,20 +13,26 @@ import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 
 @Entity
-@Table(name = "contact")
-@SQLDelete(sql = "UPDATE contact SET deleted = true WHERE id = ?")
+@Table(name = "park")
+@SQLDelete(sql = "UPDATE park SET deleted = true WHERE id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Contact {
+public class Park {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "discharge_date")
-    private LocalDate dischargeDate;
-    @ManyToOne(fetch = FetchType.EAGER)
-    private User user;
+    private String image;
+    @Column(name = "name", length= 20, nullable = false)
+    private String name;
+    private String location;
+    private String position;
     @Lob
+    @Column(name = "description", columnDefinition="CLOB")
     private String description;
+    private String link;
     private boolean deleted;
+    
+    
 }
