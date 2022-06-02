@@ -7,4 +7,5 @@ public class Contact {
     private LocalDate dischargeDate;
     private User user;
     private String description;
+    private boolean deleted;
 }
