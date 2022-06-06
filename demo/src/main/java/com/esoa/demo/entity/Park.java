@@ -14,17 +14,16 @@ import org.hibernate.annotations.SQLDelete;
 
 @Entity
 @Table(name = "park")
-@SQLDelete(sql = "UPDATE park SET deleted = true WHERE id = ?")
+//@SQLDelete(sql = "UPDATE park SET deleted = true WHERE id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
 public class Park {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String image;
-    @Column(name = "name", length= 20, nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
     private String location;
     private String position;
