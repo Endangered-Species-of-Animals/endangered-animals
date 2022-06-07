@@ -1,36 +1,36 @@
 package com.esoa.demo.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 
 @Entity
-@Table(name = "park")
-//@SQLDelete(sql = "UPDATE park SET deleted = true WHERE id = ?")
+@Table(name = "park",indexes = {@Index(name = "idx_name", columnList = "park_name")})
+@SQLDelete(sql = "UPDATE park SET deleted = true WHERE id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
 public class Park {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
+    @Column(name = "park_image")
     private String image;
-    @Column(name = "name", nullable = false)
+    @Column(name = "park_name", nullable = false)
     private String name;
+    @Column(name = "park_location", nullable = false)
     private String location;
+    @Column(name = "park_position", nullable = false)
     private String position;
     @Lob
-    @Column(name = "description", columnDefinition="CLOB")
+    @Column(name = "park_description")
     private String description;
+    @Column(name = "park_link", nullable = false)
     private String link;
+    @Column(name = "park_deleted", nullable = false)
     private boolean deleted;
     
     

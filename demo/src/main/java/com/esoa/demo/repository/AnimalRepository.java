@@ -1,4 +1,10 @@
 package com.esoa.demo.repository;
 
-public interface AnimalRepository {
+import com.esoa.demo.entity.Animal;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface AnimalRepository extends JpaRepository<Animal,Integer> {
+
 }
