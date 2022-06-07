@@ -14,32 +14,33 @@ import org.hibernate.annotations.SQLDelete;
 
 
 @Entity
-@Table(name = "animal", indexes = {@Index(name = "idx_email", columnList = "email")})
-//@SQLDelete(sql = "UPDATE animal SET deleted = true WHERE id = ?")
+@Table(name = "animal", indexes = {@Index(name = "idx_name", columnList = "animal_name")})
+@SQLDelete(sql = "UPDATE animal SET deleted = true WHERE id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
 public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "name")
+    private Integer id;
+    @Column(name = "animal_name", nullable = false)
     private String name;
+    @Column(name = "animal_scientific_name", nullable = false)
     private String scientific_name;
     @Lob
-    @Column(name = "post_description", columnDefinition="CLOB", nullable = false)
+    @Column(name = "animal_description", nullable = false)
     private String description;
-    @Column(name = "discharge_date")
+    @Column(name = "animal_discharge_date", nullable = false)
     private LocalDate dischargeDate;
     @Enumerated(STRING)
-    @Column(name = "category", nullable = false)
+    @Column(name = "animal_category", nullable = false)
     private Category category;
     @OneToOne(fetch = EAGER)
     @JoinColumn(name = "specie", referencedColumnName = "id", nullable = false)
     private Specie specie;
-    @Column(name = "image")
+    @Column(name = "animal_image")
     private String image;
-    @Column(name = "deleted", nullable = false)
+    @Column(name = "animal_deleted", nullable = false)
     private boolean deleted;
     
     

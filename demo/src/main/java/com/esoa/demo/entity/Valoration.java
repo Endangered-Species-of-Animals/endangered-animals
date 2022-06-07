@@ -3,9 +3,11 @@ package com.esoa.demo.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "valoration")
 @Getter
@@ -14,7 +16,7 @@ import java.time.LocalDateTime;
 public class Valoration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @OneToOne
     private User user;
     @Column(name = "valoration_score", nullable = true)

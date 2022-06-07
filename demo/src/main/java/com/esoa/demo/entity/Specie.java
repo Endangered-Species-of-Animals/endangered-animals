@@ -4,11 +4,13 @@ package com.esoa.demo.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "specie")
+@SQLDelete(sql = "UPDATE specie SET deleted = true WHERE id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,4 +30,6 @@ public class Specie {
     private String family;
     @Column(name = "specie_genus", nullable = false)
     private String genus;
+    @Column(name = "specie_deleted")
+    private boolean deleted;
 }

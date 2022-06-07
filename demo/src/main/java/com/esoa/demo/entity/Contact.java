@@ -31,6 +31,8 @@ public class Contact {
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
     @Lob
+    @Column(name = "contact_description", nullable = false)
     private String description;
+    @Column(name = "contact_deleted", nullable = false)
     private boolean deleted;
 }

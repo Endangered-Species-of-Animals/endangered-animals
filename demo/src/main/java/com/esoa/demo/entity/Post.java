@@ -18,16 +18,19 @@ import org.hibernate.annotations.SQLDelete;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @Lob
-    @Column(name = "post_description", columnDefinition="CLOB", nullable = false)
+    @Column(name = "post_description", nullable = false)
     private String description;
-    @Column(name = "discharge_date")
+    @Column(name = "post_discharge_date")
     private LocalDate dischargeDate;
     @OneToOne(fetch = FetchType.EAGER)
     private Animal animal;
-    @OneToMany(mappedBy = "id")
+    @OneToOne(fetch = FetchType.EAGER)
+    private Park park;
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Valoration> valoration;
+    @Column(name = "post_deleted")
     private boolean deleted;
     
 }
