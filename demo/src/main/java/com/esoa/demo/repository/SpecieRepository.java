@@ -4,9 +4,30 @@ package com.esoa.demo.repository;
 
 import com.esoa.demo.entity.Specie;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public interface SpecieRepository  extends JpaRepository<Specie,Integer> {
-    
+public interface SpecieRepository extends JpaRepository<Specie,Integer> {
+
+    boolean existsByName(String name);
+
+    @Modifying
+    @Query("UPDATE Specie s SET s.deleted = false WHERE s.id = ?1")
+    void enableById(Integer id);
+
+    @Query(value = "SELECT * FROM Specie s ORDER BY kingdom ASC", nativeQuery = true)
+    List<Specie> findAllSortedByKingdomAsc();
+
+    @Query(value = "SELECT * FROM Specie s ORDER BY kingdom DESC", nativeQuery = true)
+    List<Specie> findAllSortedByKingdomDesc();
+
+    @Query(value = "SELECT * FROM Specie s WHERE specie_deleted=1", nativeQuery = true)
+    List<Specie> findAllDeleted();
+
+    @Query(value = "SELECT * FROM Specie s WHERE specie_deleted=1", nativeQuery = true)
+    List<Specie> findAllNotDeleted();
 }

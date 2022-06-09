@@ -4,7 +4,6 @@ package com.esoa.demo.controller;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class UserController {
-
-
+public class PostController {
+    
 }
