@@ -9,10 +9,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ParkRepository extends JpaRepository<Park,Integer> {
 
+
     boolean existsByNameAndDescription(String name, String description);
 
     @Modifying
     @Query("UPDATE Park a SET a.deleted = false WHERE a.id = ?1")
     void enableById(Integer id);
+
 
 }
