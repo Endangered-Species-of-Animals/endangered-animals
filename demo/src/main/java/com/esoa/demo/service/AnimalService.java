@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 public class AnimalService {
 
     private final AnimalRepository animalRepository;
+    private final ImageAnimalService imageAnimalService;
 
 
     @Transactional
@@ -28,7 +29,7 @@ public class AnimalService {
         animal.setScientific_name(dto.getScientific_name());
         animal.setSpecie(dto.getSpecie());
         animal.setDeleted(false);
-        if (!photo.isEmpty()) animal.setImage(imageService.copy(photo));
+        if (!photo.isEmpty()) animal.setImage(imageAnimalService.copy(photo));
 
         animalRepository.save(animal);
 

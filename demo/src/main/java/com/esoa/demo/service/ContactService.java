@@ -16,18 +16,19 @@ import lombok.RequiredArgsConstructor;
 public class ContactService {
 
     private final ContactRepository contactRepository;
+    
 
     @Transactional
     public void create(Contact dto, MultipartFile photo){
-        if (contactRepository.existsByNameAndDescription(dto.getUser(), dto.getDescription()))
-            throw new IllegalArgumentException("Error!");
+        /*if (contactRepository.existsByNameAndDescription(dto.getUser(), dto.getDescription()))
+            throw new IllegalArgumentException("Error!");*/
         
         Contact contact = new Contact();
         contact.setUser(dto.getUser());
         contact.setDescription(dto.getDescription());
         contact.setDischargeDate(dto.getDischargeDate());
         contact.setDeleted(false);
-        if (!photo.isEmpty()) contact.setImage(imageService.copy(photo));
+        
 
         contactRepository.save(contact);
 
