@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class ParkService {
 
     private final ParkRepository parkRepository;
-    private final ImageService imageService;
+    private final ImageParkService imageParkService;
 
     @Transactional
     public void create(Park dto, MultipartFile photo){
@@ -30,7 +30,7 @@ public class ParkService {
         park.setDescription(dto.getDescription());
         park.setLink(dto.getLink());
         park.setDeleted(false);
-        if (!photo.isEmpty()) park.setImage(imageService.copy(photo));
+        if (!photo.isEmpty()) park.setImage(imageParkService.copy(photo));
         parkRepository.save(park);
 
         

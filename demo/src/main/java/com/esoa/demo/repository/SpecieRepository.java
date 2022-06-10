@@ -19,15 +19,15 @@ public interface SpecieRepository extends JpaRepository<Specie,Integer> {
     @Query("UPDATE Specie s SET s.deleted = false WHERE s.id = ?1")
     void enableById(Integer id);
 
-    @Query(value = "SELECT * FROM Specie s ORDER BY kingdom ASC", nativeQuery = true)
+    @Query(value = "SELECT * FROM specie s ORDER BY specie_kingdom ASC", nativeQuery = true)
     List<Specie> findAllSortedByKingdomAsc();
 
-    @Query(value = "SELECT * FROM Specie s ORDER BY kingdom DESC", nativeQuery = true)
+    @Query(value = "SELECT * FROM specie s ORDER BY specie_kingdom DESC", nativeQuery = true)
     List<Specie> findAllSortedByKingdomDesc();
 
-    @Query(value = "SELECT * FROM Specie s WHERE specie_deleted=1", nativeQuery = true)
+    @Query(value = "SELECT * FROM specie s WHERE specie_deleted=1", nativeQuery = true)
     List<Specie> findAllDeleted();
 
-    @Query(value = "SELECT * FROM Specie s WHERE specie_deleted=1", nativeQuery = true)
+    @Query(value = "SELECT * FROM specie s WHERE specie_deleted=1", nativeQuery = true)
     List<Specie> findAllNotDeleted();
 }
