@@ -57,7 +57,7 @@ public class AnimalService {
     }
 
     @Transactional(readOnly = true)
-    public List<Animal> getAll(Integer id){
+    public List<Animal> getAll(){
         return animalRepository.findAll();
     }
 

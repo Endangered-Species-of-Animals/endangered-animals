@@ -56,7 +56,7 @@ public class ParkService {
     }
 
     @Transactional(readOnly = true)
-    public List<Park> getAll(Integer id){
+    public List<Park> getAll(){
         return parkRepository.findAll();
     }
 
