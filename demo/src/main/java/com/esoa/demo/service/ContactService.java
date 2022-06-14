@@ -19,7 +19,7 @@ public class ContactService {
     
 
     @Transactional
-    public void create(Contact dto, MultipartFile photo){
+    public void create(Contact dto){
         /*if (contactRepository.existsByNameAndDescription(dto.getUser(), dto.getDescription()))
             throw new IllegalArgumentException("Error!");*/
         
@@ -50,7 +50,7 @@ public class ContactService {
     }
 
     @Transactional(readOnly = true)
-    public List<Contact> getAll(Integer id){
+    public List<Contact> getAll(){
         return contactRepository.findAll();
     }
 
