@@ -26,7 +26,7 @@ public class AnimalController {
 
     @GetMapping
     public ModelAndView getAnimals(HttpServletRequest request) {
-        ModelAndView mav = new ModelAndView("animals-table");
+        ModelAndView mav = new ModelAndView("animal-table");
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
 
         if (inputFlashMap != null) mav.addObject("success", inputFlashMap.get("success"));
