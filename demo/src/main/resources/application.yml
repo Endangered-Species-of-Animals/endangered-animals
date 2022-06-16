@@ -13,3 +13,17 @@ spring:
   mvc:
     format:
       date: yyyy-MM-dd
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: endangered.species.of.animals@gmail.com
+    password: fksvoyxroqtecrcm
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            required: true
+            enable: true
+          ssl:
+            trust: smtp.gmail.com

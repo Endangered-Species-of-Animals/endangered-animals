@@ -807,7 +807,7 @@ img {
 }
 
 .header.fixed .nav-wrap #site-logo {
-  padding: 25px 0;
+  padding: /*25px*/ 0;
 }
 
 .header.header-three .nav-wrap .tim-nav > li.menu-item-has-children .sub-menu {
@@ -1106,7 +1106,7 @@ img {
 .nav-wrap #site-logo {
   display: inline-block;
   float: left;
-  padding: 40px 0;
+  padding: /*40px*/ 0;
 }
 
 .nav-wrap .tim-nav {
