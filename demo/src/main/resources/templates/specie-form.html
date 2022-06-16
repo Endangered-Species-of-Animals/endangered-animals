@@ -1,43 +1,13 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <!-- Meta Data -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home — Multipurpose Gaming Template</title>
+<head th:replace="fragments/head :: head"></head>
 
-    <!-- Fav Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/fav-icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/fav-icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/fav-icons/favicon-16x16.png">
-    <meta name="theme-color" content="#3d0e03">
-
-    <!-- Dependency Styles -->
-    <link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="dependencies/font-awesome/css/font-awesome.min.css" type="text/css">
-
-    <!-- Site Stylesheet -->
-    <link rel="stylesheet" href="dependencies/swiper/swiper.min.css" type="text/css">
-    <link rel="stylesheet" href="dependencies/wow/css/animate.css" type="text/css">
-    <link rel="stylesheet" href="dependencies/magnific-popup/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="dependencies/jquery-animated-headlines/css/jquery.animatedheadline.css"
-        type="text/css">
-    <link rel="stylesheet" href="assets/css/woocommerce.css" type="text/css">
-    <link rel="stylesheet" href="dependencies/jquery-ui/css/jquery-ui.css" type="text/css">
-    <link rel="stylesheet" href="dependencies/slick-carousel/css/slick.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/app.css" type="text/css">
-
-    <!-- Google Web Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+<header th:replace="fragments/header :: header"></header>
 
 
-</head>
-
-<body id="home-version-1" class="home-version-1" data-bg-image="media/blog/57.jpg" data-style="default">
-
+<!--
     <div id="loader-wrapper">
         <div class="loader">
             <div class="loader-inner"></div>
@@ -46,125 +16,122 @@
             <div class="loader-inner"></div>
         </div>
     </div>
+    -->
 
+<body>
     <a href="#main_content" data-type="section-switch" class="return-to-top back-top"><i
             class="fa fa-chevron-up"></i></a>
 
     <div id="main_content">
 
 
-        <header th:replace="fragments/header :: header"></header>
+        
 
 
 
         <!--=========================-->
         <!--=        Banner         =-->
         <!--=========================-->
-        <section id="page-header" data-bg-image="">
+        <section>
+            <div>
+                <img src="../media/banner/44.jpg">
+            </div>
+            <!-- /.container -->
+        </section>
+        <!-- /#page-header -->
 
-    </div>
-    <!-- /.page-title-inner -->
-    </div>
-    <!-- /.page-title-wrap -->
-    </div>
-    <!-- /.container -->
-    </section>
-    <!-- /#page-header -->
-
-    <!--==============================-->
-    <!--=        Game Review         =-->
-    <!--==============================-->
+        <!--==============================-->
+        <!--=        Game Review         =-->
+        <!--==============================-->
 
 
 
-    <section id="game-review" class="section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-sm-12">
-                    <div class="review-inner" data-bg-image="">
-                        <div class="row no-gutters">
-                            <div class="col-md-8 pr__15">
-                                <div class="swiper-container review-slider"
-                                    data-swiper-config='{"loop": true, "effect": "slide", "speed": 700, "prevButton": "#review-nav-prev", "nextButton": "#review-nav-next", "autoplay": 5000, "paginationClickable": true}'>
+        <section id="footer-three" class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-sm-12">
+                        <div class="review-inner" data-bg-image="">
+                            <div class="row no-gutters">
+                                <div class="col-md-8 pr__15">
+                                    <form role="form">
+                                        <!--th:action="@{/agregar/specie/__${action}__}" th:object="${specie}" method="post" autocomplete="off" >
+                                        <input type="hidden" th:field="*{id}">-->
+                                        <div class="mb-3">
+                                            <label for="kingdom" class="form-label" style="color: #c7f012"> Nombre </label>
+                                            <input type="text" class="form-control" id="formGroupExampleInput"
+                                                placeholder=" Nombre del Animal ">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="formGroupExampleInput2" class="form-label" style="color: #c7f012"> Reino </label>
+                                            <input type="text" class="form-control" id="formGroupExampleInput2"
+                                                placeholder=" Reino Animal ">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="formGroupExampleInput" class="form-label" style="color: #c7f012"> Phylum </label>
+                                            <input type="text" class="form-control" id="formGroupExampleInput"
+                                                placeholder=" Ingrese Phylum ">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="formGroupExampleInput2" class="form-label" style="color: #c7f012"> Orden </label>
+                                            <input type="text" class="form-control" id="formGroupExampleInput2"
+                                                placeholder=" Ingrese orden ">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="formGroupExampleInput" class="form-label" style="color: #c7f012">Familia</label>
+                                            <input type="text" class="form-control" id="formGroupExampleInput"
+                                                placeholder=" Ingrese Familia ">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="formGroupExampleInput2" class="form-label" style="color: #c7f012">Género</label>
+                                            <input type="text" class="form-control" id="formGroupExampleInput2"
+                                                placeholder=" Ingrese género ">
+                                        </div>
 
-                                    <div class="mb-3">
-                                        <label for="kingdom" class="form-label"> Nombre </label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput"
-                                            placeholder=" Nombre del Animal ">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="formGroupExampleInput2" class="form-label"> Reino </label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput2"
-                                            placeholder=" Reino Animal ">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="formGroupExampleInput" class="form-label"> Phylum </label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput"
-                                            placeholder=" Ingrese Phylum ">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="formGroupExampleInput2" class="form-label"> Orden </label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput2"
-                                            placeholder=" Ingrese orden ">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="formGroupExampleInput" class="form-label">Familia</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput"
-                                            placeholder=" Ingrese Familia ">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="formGroupExampleInput2" class="form-label">Género</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput2"
-                                            placeholder=" Ingrese género ">
-                                    </div>
+                                        <button type="submit" class="btn btn-success">Añadir Especie</button>
+                                    </form>
                                     <!-- /.col-md-8 -->
 
-
-
-
-                                    <!--==============++============-->
-                                    <!--=        Footer One        =-->
-                                    <!--================++==========-->
-
-
-                                    <div class="copy-right">
-                                        <p>DESARROLLADORES SWIFT-TEAM- State Wide Integrated Fauna Team<a
-                                                href="http://themeim.com" target="_blank"></a> EDUCACIÓN DEL HUEVO </p>
-                                    </div>
                                 </div>
-                                <!-- /.footer-inner -->
                             </div>
-                            <!-- /.container -->
-                            <!-- <div class="fire-bg-wrap">
-          <div class="footer-fire"></div>
-      </div> -->
-                            <!-- /.fire-bg-wrap -->
-                            </footer>
-                            <!-- /#footer-three -->
-
-
-
                         </div>
-                        <!-- /#site -->
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                        <!-- Dependency Scripts -->
-                        <script src="dependencies/popper.js/popper.min.js"></script>
-                        <script src="dependencies/jquery/jquery.min.js"></script>
-                        <script src="dependencies/bootstrap/js/bootstrap.min.js"></script>
-                        <script src="dependencies/swiper/js/swiper.min.js"></script>
-                        <script src="dependencies/swiperRunner/swiperRunner.min.js"></script>
-                        <script src="dependencies/slick-carousel/js/slick.min.js"></script>
-                        <script src="dependencies/magnific-popup/js/jquery.magnific-popup.min.js"></script>
-                        <script src="dependencies/jquery-ui/jquery-ui.min.js"></script>
-                        <script src="dependencies/jquery-animated-headlines/js/jquery.animatedheadline.min.js"></script>
-                        <script src="dependencies/jquery.countdown/jquery.countdown.min.js"></script>
-                        <script src="dependencies/countUp.js/js/countUp.min.js"></script>
-                        <script src="dependencies/jquery.appear.bas2k/jquery.appear.js"></script>
-                        <script src="dependencies/jquery.ripples/jquery.ripples.js"></script>
-                        <script src="dependencies/wow/js/wow.min.js"></script>
 
-                        <!-- Site Scripts -->
-                        <script src="assets/js/app.js"></script>
+
+        <!--==============++============-->
+        <!--=        Footer One        =-->
+        <!--================++==========-->
+
+
+        <footer th:replace="fragments/footer :: footer"></footer>
+
+
+
+
+
+
+    </div>
+    <!-- Dependency Scripts -->
+    <script src="dependencies/popper.js/popper.min.js"></script>
+    <script src="dependencies/jquery/jquery.min.js"></script>
+    <script src="dependencies/bootstrap/js/bootstrap.min.js"></script>
+    <script src="dependencies/swiper/js/swiper.min.js"></script>
+    <script src="dependencies/swiperRunner/swiperRunner.min.js"></script>
+    <script src="dependencies/slick-carousel/js/slick.min.js"></script>
+    <script src="dependencies/magnific-popup/js/jquery.magnific-popup.min.js"></script>
+    <script src="dependencies/jquery-ui/jquery-ui.min.js"></script>
+    <script src="dependencies/jquery-animated-headlines/js/jquery.animatedheadline.min.js"></script>
+    <script src="dependencies/jquery.countdown/jquery.countdown.min.js"></script>
+    <script src="dependencies/countUp.js/js/countUp.min.js"></script>
+    <script src="dependencies/jquery.appear.bas2k/jquery.appear.js"></script>
+    <script src="dependencies/jquery.ripples/jquery.ripples.js"></script>
+    <script src="dependencies/wow/js/wow.min.js"></script>
+
+    <!-- Site Scripts -->
+    <script src="assets/js/app.js"></script>
 
 </body>
 
