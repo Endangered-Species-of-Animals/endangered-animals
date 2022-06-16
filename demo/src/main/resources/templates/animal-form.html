@@ -2,120 +2,79 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-	<head th:replace="fragments/head :: head"></head>
+<head th:replace="fragments/head :: head"></head>
 
 
 <body class="strategy-zoombie" data-bg-image="media/blog/57.jpg" data-style="default">
 
-	<div id="loader-wrapper">
-		<div class="loader">
-			<div class="loader-inner"></div>
-			<div class="loader-inner"></div>
-			<div class="loader-inner"></div>
-			<div class="loader-inner"></div>
-		</div>
-	</div>
 
 	<a href="#main_content" data-type="section-switch" class="return-to-top back-top"><i
 			class="fa fa-chevron-up"></i></a>
 
 	<div id="main_content">
 
-
-
 		<header th:replace="fragments/header :: header"></header>
-
-
-
-		<!--=========================-->
-		<!--=        Banner         =-->
-		<!--=========================-->
-		<section id="page-header" data-bg-image="media/banner/19.jpg">
-			<div class="container">
-				<div class="page-title-wrap">
-					<div class="page-title-inner">
-						<h1></h1>
-						<h3>CARGAR ANIMAL</h3>
-						<span class="delemitter" data-bg-image="media/banner/s1.png"></span>
-					</div>
-					<!-- /.page-title-inner -->
-				</div>
-				<!-- /.page-title-wrap -->
-			</div>
-			<!-- /.container -->
+		
+		<section id="page-header" >
+			<img src="../media/banner/2.jpg">
+			
 		</section>
-		<!-- /#page-header -->
 
-
-
-
-		<!--==============================-->
-		<!--=        Game Review         =-->
-		<!--==============================-->
 		<section id="footer-three" class="pt__50 pb__50">
-
+			
 			<div class="container">
-				<div>
-					<form role="form">
-						<div class="form-group">
-							<label for="ejemplo_email_1" style="color: #c7f012">Nombre del Animal</label>
-							<input type="email" class="form-control" id="ejemplo_email_1"
-								placeholder="Introduce nombre del animal">
-						</div>
-						<div class="form-group">
-							<label for="" style="color: #c7f012">Nombre Cientifico</label>
-							<input class="form-control" id="" placeholder="Nombre Cientifico">
-						</div>
-						<div class="form-group">
-							<label for="exampleFormControlTextarea1" style="color: #c7f012">Descripcion</label>
-							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-						</div>
 
-						<div>
-							<label for="autor" style="color: #c7f012">Seleccione Categoria</label>
+				<form role="form" th:action="@{/animals/__${action}__}" th:object="${animal}" method="post" autocomplete="off" 
+					class="needs-validation" enctype="multipart/form-data" novalidate>
+					<input type="hidden" th:field="*{id}">
+					<div class="form-group">
+						<label for="ejemplo_email_1" style="color: #c7f012">Nombre del Animal</label>
+						<input type="text" class="form-control" th:field="*{name}" id="ejemplo_email_1"
+							placeholder="Introduce nombre del animal">
+					</div>
+					<div class="form-group">
+						<label for="" style="color: #c7f012">Nombre Cientifico</label>
+						<input type="text" class="form-control" id="" th:field="*{scientific_name}" placeholder="Nombre Cientifico">
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlTextarea1" style="color: #c7f012">Descripcion</label>
+						<textarea type="text" class="form-control" id="exampleFormControlTextarea1" th:field="*{description}" rows="3"></textarea>
+					</div>
 
-							<select class="form-select" id="">
-								<option>
-								</option>
+					<div>
+						<label for="autor" style="color: #c7f012">Seleccione Categoria</label>
 
-							</select>
-						</div>
-						<div>
-							<label for="autor" style="color: #c7f012">Seleccione Especie</label>
+						<select th:field="*{category}" class="form-select" id="category">
+							<option selected value="" >Categoria</option>
+								
+							
+							<option th:each="category: ${T(com.esoa.demo.enumeration.Category).values()}" th:text="${category}"
+                                    th:value="${category}"></option>
 
-							<select class="form-select" id="">
-								<option text="" value="">
-								</option>
+						</select>
+					</div>
+					<div>
+						<label for="specie" style="color: #c7f012">Seleccione Especie</label>
 
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="ejemplo_archivo_1" style="color: #c7f012">Adjuntar un archivo</label>
-							<input type="file" id="ejemplo_archivo_1">
+						<select th:field=*{specie} class="form-select" id="specie">  
+							<option selected value="" >Especie</option>
+							<option th:each="specie:${species}" th:text="${specie.name}"
+								th:value="${specie.id}"></option>
+							
+						  </select>
+					</div>
+					<div class="form-group">
+                        <label for="photo" style="color: #c7f012" >Cargar Imagen</label>
+                        <input  type="file" name="photo" accept="image/*">
+                    </div>
+					
 
-						</div>
-
-						<button type="submit" class="btn btn-default">Cargar Posteo</button>
-					</form>
-				</div>
+					<button type="submit" class="btn btn-default">Cargar Posteo</button>
+				</form>
 			</div>
-
-
 		</section>
-		<!-- /#game-review -->
-
-
-
-		<!--==============++============-->
-		<!--=        Footer One        =-->
-		<!--================++==========-->
-
-		<!-- /#footer-three -->
-
 		<footer th:replace="fragments/footer :: footer"></footer>
-
 	</div>
-	
 </body>
 
 </html>

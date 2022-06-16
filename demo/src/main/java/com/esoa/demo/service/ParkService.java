@@ -1,6 +1,9 @@
 package com.esoa.demo.service;
 
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -30,7 +33,20 @@ public class ParkService {
         park.setDescription(dto.getDescription());
         park.setLink(dto.getLink());
         park.setDeleted(false);
-        if (!photo.isEmpty()) park.setImage(imageParkService.copy(photo));
+        if (!photo.isEmpty()){
+            Path directoryImage = Paths.get("demo//src//main//resources//static//uploads/parks");
+            String rutaAbsoluta = directoryImage.toFile().getAbsolutePath();
+
+            try {
+                byte[] bytesImg = photo.getBytes();
+                Path rutaCompleta = Paths.get(rutaAbsoluta + "//"+ photo.getOriginalFilename());
+                Files.write(rutaCompleta, bytesImg);
+                park.setImage(photo.getOriginalFilename());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        };
         parkRepository.save(park);
 
         

@@ -4,6 +4,8 @@ package com.esoa.demo.controller;
 import com.esoa.demo.entity.Animal;
 import com.esoa.demo.entity.Park;
 import com.esoa.demo.service.AnimalService;
+import com.esoa.demo.service.SpecieService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +24,8 @@ import java.util.Map;
 public class AnimalController {
 
     private final AnimalService animalService;
-
+    private final SpecieService specieService;
+    
 
     @GetMapping
     public ModelAndView getAnimals(HttpServletRequest request) {
@@ -36,16 +39,20 @@ public class AnimalController {
     }
 //    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/form")
-    public ModelAndView getAnimalForm() {
+    public ModelAndView getAnimalForm(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("animal-form");
-        //Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
+        Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
 
-       /*  if (inputFlashMap != null) {
+         if (inputFlashMap != null) {
             mav.addObject("animal", inputFlashMap.get("animal"));
             mav.addObject("exception", inputFlashMap.get("exception"));
         } else {
             mav.addObject("animal", new Animal());
-        }*/
+        }
+        mav.addObject("species", specieService.getAll());
+        mav.addObject("action", "create");
+
+
 
         
         return mav;
