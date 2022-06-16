@@ -35,4 +35,6 @@ public class Contact {
     private String description;
     @Column(name = "contact_deleted", nullable = false)
     private boolean deleted;
+    @Column(name = "post_title", nullable = false)
+    private String title;
 }

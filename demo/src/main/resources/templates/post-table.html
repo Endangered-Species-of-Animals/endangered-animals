@@ -1,12 +1,80 @@
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/head :: head"></head>
+	<head th:replace="fragments/head :: head"></head>
 
-<body>
-<header th:replace="fragments/header :: header"></header>
-<footer th:replace="fragments/footer :: footer"></footer>
-<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-</body>
 
-</html>
+<body class="strategy-zoombie" data-bg-image="media/blog/57.jpg" data-style="default">
+
+
+
+	<a href="#main_content" data-type="section-switch" class="return-to-top back-top"><i
+			class="fa fa-chevron-up"></i></a>
+
+	<div id="main_content">
+
+
+
+		<header th:replace="fragments/header :: header"></header>
+
+
+
+		<!--=========================-->
+		<!--=        Banner         =-->
+		<!--=========================-->
+		
+        <section id="page-header" data-bg-image="media/banner/19.jpg">
+			<div class="container">
+				<div class="page-title-wrap">
+					<div class="page-title-inner">
+						<h1></h1>
+						<h3>CARGAR ANIMAL</h3>
+						<span class="delemitter" data-bg-image="media/banner/s1.png"></span>
+					</div>
+					<!-- /.page-title-inner -->
+				</div>
+				<!-- /.page-title-wrap -->
+			</div>
+			<!-- /.container -->
+		</section>
+		<!-- /#page-header -->
+
+
+
+     <section class="blog-grid pt__50 pb__50">
+			<div class="container">
+				<div class="row">
+        <div class="col-lg-4 col-md-6">
+            <div class="blog-post-grid">
+                <div class="featire-image">
+                    <a href="#"><img src="media/blog/70.jpg" alt="Blog Thumb"></a>
+
+                </div>
+
+                <div class="post-type-icon"><i class="fa fa-picture-o"></i></div>
+
+                <div class="blog-content">
+                    <ul class="blog-meta">
+                        <li><i class="fa fa-user"></i><a href="#" class="admin">Admin</a></li>
+                        <li><i class="fa fa-tags"></i> <a href="#">Action,</a> <a href="#">Advancher</a></li>
+                        <li><i class="fa fa-calendar"></i><a href="#">20 Mar, 2018</a></li>
+                    </ul>
+                    <h3 class="blog-title"><a href="#">Red Dead Redemption 2 Microtransactions Ubisoft Talks PS5</a></h3>
+
+                    <p>
+                        And she went on planning to herself how she would manage it. They must go by the carrier, she thought and how funny it'll seem.
+                    </p>
+
+                    <a href="#" class="tim-btn">Read More</a>
+                </div>
+                <!-- /.blog-content -->
+            </div>
+            <!-- /.blog-post-grid -->
+        </div>
+        <!-- /.col-lg-4 col-md-6 -->
+
+
+
+		</section>
+		<!-- /#game-review -->

@@ -1,12 +1,124 @@
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/head :: head"></head>
+	<head th:replace="fragments/head :: head"></head>
 
-<body>
-<header th:replace="fragments/header :: header"></header>
-<footer th:replace="fragments/footer :: footer"></footer>
-<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+<body class="strategy-zoombie" data-bg-image="media/blog/57.jpg" data-style="default">
+
+	<div id="loader-wrapper">
+		<div class="loader">
+			<div class="loader-inner"></div>
+			<div class="loader-inner"></div>
+			<div class="loader-inner"></div>
+			<div class="loader-inner"></div>
+		</div>
+	</div>
+
+	<a href="#main_content" data-type="section-switch" class="return-to-top back-top"><i
+			class="fa fa-chevron-up"></i></a>
+
+	<div id="main_content">
+
+
+
+		<header th:replace="fragments/header :: header"></header>
+
+
+
+		<!--=========================-->
+		<!--=        Banner         =-->
+		<!--=========================-->
+		<section id="page-header" data-bg-image="media/banner/19.jpg">
+			<div class="container">
+				<div class="page-title-wrap">
+					<div class="page-title-inner">
+						<h1></h1>
+						<h3>CARGAR ANIMAL</h3>
+						<span class="delemitter" data-bg-image="media/banner/s1.png"></span>
+					</div>
+					<!-- /.page-title-inner -->
+				</div>
+				<!-- /.page-title-wrap -->
+			</div>
+			<!-- /.container -->
+		</section>
+		<!-- /#page-header -->
+
+
+
+
+		<!--==============================-->
+		<!--=        Game Review         =-->
+		<!--==============================-->
+		<section id="footer-three" class="pt__50 pb__50">
+
+			<div class="container">
+				<div>
+					<form role="form">
+						<div class="form-group">
+							<label for="ejemplo_email_1" style="color: #c7f012">Nombre de la Reserva</label>
+							<input type="email" class="form-control" id="ejemplo_email_1"
+								placeholder="Ingrese el nombre de la Reserva">
+						</div>
+
+						<div class="form-group">
+							<label for="exampleFormControlTextarea1" style="color: #c7f012">Descripcion</label>
+							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+						</div>
+
+						<div>
+							<label for="autor" style="color: #c7f012">Seleccione Categoria</label>
+
+							<select class="form-select" id="">
+								<option>
+								</option>
+
+							</select>
+						</div>
+
+						<button type="submit" class="btn btn-default">Cargar Posteo</button>
+					</form>
+				</div>
+			</div>
+
+
+		</section>
+		<!-- /#game-review -->
+
+
+
+		<!--==============++============-->
+		<!--=        Footer One        =-->
+		<!--================++==========-->
+
+		<!-- /#footer-three -->
+
+		<footer th:replace="fragments/footer :: footer"></footer>
+
+	</div>
+	<!-- /#site -->
+
+	<!-- Dependency Scripts -->
+	<script src="../dependencies/popper.js/popper.min.js"></script>
+	<script src="../dependencies/jquery/jquery.min.js"></script>
+	<script src="../dependencies/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../dependencies/swiper/js/swiper.min.js"></script>
+	<script src="../dependencies/swiperRunner/swiperRunner.min.js"></script>
+	<script src="../dependencies/slick-carousel/js/slick.min.js"></script>
+	<script src="../dependencies/magnific-popup/js/jquery.magnific-popup.min.js"></script>
+	<script src="../dependencies/jquery-ui/jquery-ui.min.js"></script>
+	<script src="../dependencies/jquery-animated-headlines/js/jquery.animatedheadline.min.js"></script>
+	<script src="../dependencies/jquery.countdown/jquery.countdown.min.js"></script>
+	<script src="../dependencies/countUp.js/js/countUp.min.js"></script>
+	<script src="../dependencies/jquery.appear.bas2k/jquery.appear.js"></script>
+	<script src="../dependencies/jquery.ripples/jquery.ripples.js"></script>
+	<script src="../dependencies/wow/js/wow.min.js"></script>
+
+	<!-- Site Scripts -->
+	<script src="../assets/js/app.js"></script>
+
 </body>
 
 </html>

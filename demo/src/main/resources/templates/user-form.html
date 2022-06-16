@@ -7,38 +7,37 @@
 <header th:replace="fragments/header :: header"></header>
 
 <body>
-
-    <div class="container">
-        <div>
-            <form role="form">
-                <!--th:action="@{/agregar/user/__${action}__}" th:object="${user}" method="post" autocomplete="off" >
+    <section id="banner">
+    </section>
+        <div class="container">
+            <div>
+                <form role="form">
+                    <!--th:action="@{/agregar/user/__${action}__}" th:object="${user}" method="post" autocomplete="off" >
                             <input type="hidden" th:field="*{id}">-->
 
-
-                
-                <div class="form-group">
-                    <label for="" style="color: #c7f012">Email</label>
-                    <input class="form-control" id="" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <label for="" style="color: #c7f012">Nombre</label>
-                    <input class="form-control" id="" placeholder="Nombre">
-                </div>
-                <div class="form-group">
-                    <label for="" style="color: #c7f012">Apellido</label>
-                    <input class="form-control" id="" placeholder="Apellido">
-                </div>
-                <div class="form-group">
-                    <label for="" style="color: #c7f012">Contraseña</label>
-                    <input class="form-control" id="" placeholder="Contraseña">
-                </div>
+                    <div class="form-group">
+                        <label for="" style="color: #c7f012">Email</label>
+                        <input class="form-control" id="" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="" style="color: #c7f012">Nombre</label>
+                        <input class="form-control" id="" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="" style="color: #c7f012">Apellido</label>
+                        <input class="form-control" id="" placeholder="Apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="" style="color: #c7f012">Contraseña</label>
+                        <input class="form-control" id="" placeholder="Contraseña">
+                    </div>
 
 
-                <button type="submit" class="btn btn-default">Crear Usuario</button>
-            </form>
+                    <button type="submit" class="btn btn-default">Crear Usuario</button>
+                </form>
+            </div>
         </div>
-    </div>
-
+   
 
 </body>
 
