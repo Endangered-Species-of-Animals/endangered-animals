@@ -4,13 +4,14 @@
 
 <head th:replace="fragments/head :: head"></head>
 
-<header th:replace="fragments/header :: header"></header>
+
 
 
 <body>
-    <!--=========================-->
-    <!--=        Banner         =-->
-    <!--=========================-->
+
+    <header th:replace="fragments/header :: header"></header>
+
+    
     <section id="banner">
         <div class="swiper-container banner-slider"
             data-swiper-config='{"loop": true, "effect": "slide", "prevButton":"#banner-nav-prev", "nextButton": "#banner-nav-next", "speed": 800, "autoplay": 5000, "grabCursor": true, "paginationClickable": true}'>
@@ -55,14 +56,6 @@
 </body>
 
 
-
-
-
 <footer th:replace="fragments/footer :: footer"></footer>
-
-
-
-<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-
 
 </html>
