@@ -53,41 +53,41 @@
                         <div class="review-inner" data-bg-image="">
                             <div class="row no-gutters">
                                 <div class="col-md-8 pr__15">
-                                    <form role="form">
-                                        <!--th:action="@{/agregar/specie/__${action}__}" th:object="${specie}" method="post" autocomplete="off" >
-                                        <input type="hidden" th:field="*{id}">-->
+                                    <form role="form" th:action="@{/species/__${action}__}" th:object="${specie}" method="post" autocomplete="off" >
+                                        <input type="hidden" th:field="*{id}" >
+                                        
                                         <div class="mb-3">
                                             <label for="kingdom" class="form-label" style="color: #c7f012"> Nombre </label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput"
+                                            <input type="text" class="form-control" id="formGroupExampleInput" th:field="*{name}"
                                                 placeholder=" Nombre del Animal ">
                                         </div>
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput2" class="form-label" style="color: #c7f012"> Reino </label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput2"
+                                            <input type="text" class="form-control" id="formGroupExampleInput2" th:field="*{kingdom}"
                                                 placeholder=" Reino Animal ">
                                         </div>
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label" style="color: #c7f012"> Phylum </label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput"
+                                            <input type="text" class="form-control" id="formGroupExampleInput" th:field="*{phylum}"
                                                 placeholder=" Ingrese Phylum ">
                                         </div>
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput2" class="form-label" style="color: #c7f012"> Orden </label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput2"
+                                            <input type="text" class="form-control" id="formGroupExampleInput2" th:field="*{order}"
                                                 placeholder=" Ingrese orden ">
                                         </div>
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label" style="color: #c7f012">Familia</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput"
+                                            <input type="text" class="form-control" id="formGroupExampleInput" th:field="*{family}"
                                                 placeholder=" Ingrese Familia ">
                                         </div>
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput2" class="form-label" style="color: #c7f012">Género</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput2"
+                                            <input type="text" class="form-control" id="formGroupExampleInput2" th:field="*{genus}"
                                                 placeholder=" Ingrese género ">
                                         </div>
 
-                                        <button type="submit" class="btn btn-success">Añadir Especie</button>
+                                        <button type="submit"  class="btn btn-success">Añadir Especie</button>
                                     </form>
                                     <!-- /.col-md-8 -->
 
