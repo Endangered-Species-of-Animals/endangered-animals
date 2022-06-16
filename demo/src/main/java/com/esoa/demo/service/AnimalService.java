@@ -1,5 +1,9 @@
 package com.esoa.demo.service;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,12 +28,25 @@ public class AnimalService {
         Animal animal = new Animal();
         animal.setName(dto.getName());
         animal.setDescription(dto.getDescription());
-        animal.setDischargeDate(dto.getDischargeDate());
+        animal.setDischargeDate(LocalDate.now());
         animal.setCategory(dto.getCategory());
         animal.setScientific_name(dto.getScientific_name());
         animal.setSpecie(dto.getSpecie());
         animal.setDeleted(false);
-        if (!photo.isEmpty()) animal.setImage(imageAnimalService.copy(photo));
+        if (!photo.isEmpty()){
+            Path directoryImage = Paths.get("demo//src//main//resources//static//uploads/animals");
+            String rutaAbsoluta = directoryImage.toFile().getAbsolutePath();
+
+            try {
+                byte[] bytesImg = photo.getBytes();
+                Path rutaCompleta = Paths.get(rutaAbsoluta + "//"+ photo.getOriginalFilename());
+                Files.write(rutaCompleta, bytesImg);
+                animal.setImage(photo.getOriginalFilename());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
 
         animalRepository.save(animal);
 
