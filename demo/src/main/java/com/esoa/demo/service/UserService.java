@@ -4,6 +4,11 @@ import com.esoa.demo.entity.User;
 import com.esoa.demo.enumeration.Role;
 import com.esoa.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -16,10 +21,10 @@ import static java.util.Collections.singletonList;
 
 @Service
 @RequiredArgsConstructor
-public class UserService /* implements UserDetailsService */ {
+public class UserService  implements UserDetailsService  {
 
     private final UserRepository userRepository;
-    //private final BCryptPasswordEncoder encoder;
+    private final BCryptPasswordEncoder encoder;
     private final EmailService emailService;
 
     @Transactional
@@ -32,12 +37,12 @@ public class UserService /* implements UserDetailsService */ {
         user.setEmail(dto.getEmail());
         user.setName(dto.getName());
         user.setLastName(dto.getLastName());
-//        user.setPassword(encoder.encode(dto.getPassword()));  //dependencia de seguridad
+        user.setPassword(encoder.encode(dto.getPassword()));  //dependencia de seguridad
 
         if (userRepository.findAll().isEmpty()) user.setRole(Role.ADMIN);
         else user.setRole(dto.getRole());
 
-//        emailService.send(dto.getEmail());    //dependencia de email
+        //emailService.send(dto.getEmail());    //dependencia de email
 
         userRepository.save(user);
     }
@@ -80,6 +85,12 @@ public class UserService /* implements UserDetailsService */ {
     @Transactional
     public void deleteById(Integer id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     /*
