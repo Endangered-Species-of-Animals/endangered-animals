@@ -19,8 +19,8 @@ public class PostService {
     public void create(Post dto) {
 
         Post post = new Post();
-
-        post.setDescription(dto.getDescription());
+        post.setTitle(dto.getTitle());
+        post.setIntroduction(dto.getIntroduction());
         post.setDischargeDate(dto.getDischargeDate());
 //if
         post.setAnimal(dto.getAnimal());
@@ -36,7 +36,7 @@ public class PostService {
     public void update(Post dto) {
 
         Post post = postRepository.findById(dto.getId()).get();
-        post.setDescription(dto.getDescription());
+        post.setIntroduction(dto.getIntroduction());
         post.setDischargeDate(dto.getDischargeDate());
 //if
         post.setAnimal(dto.getAnimal());

@@ -2,6 +2,8 @@
 package com.esoa.demo.controller;
 
 import com.esoa.demo.entity.Post;
+import com.esoa.demo.service.AnimalService;
+import com.esoa.demo.service.ParkService;
 import com.esoa.demo.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,7 +23,8 @@ import java.util.Map;
 public class PostController {
 
     private final PostService postService;
-
+    private final AnimalService animalService;
+    private final ParkService parkService;
     @GetMapping
     public ModelAndView getPost(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("post-table");
@@ -44,7 +47,8 @@ public class PostController {
         } else {
             mav.addObject("post", new Post());
         }
-
+        mav.addObject("animals",animalService.getAll());
+        mav.addObject("parks",parkService.getAll());
         mav.addObject("action", "create");
         return mav;
     }

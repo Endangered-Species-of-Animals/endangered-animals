@@ -2,7 +2,7 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-	<head th:replace="fragments/head :: head"></head>
+<head th:replace="fragments/head :: head"></head>
 
 
 <body class="strategy-zoombie" data-bg-image="media/blog/57.jpg" data-style="default">
@@ -30,20 +30,13 @@
 		<!--=========================-->
 		<!--=        Banner         =-->
 		<!--=========================-->
-		<section id="page-header" data-bg-image="media/banner/19.jpg">
-			<div class="container">
-				<div class="page-title-wrap">
-					<div class="page-title-inner">
-						<h1></h1>
-						<h3>CARGAR PUBLICACION</h3>
-						<span class="delemitter" data-bg-image="media/banner/s1.png"></span>
-					</div>
-					<!-- /.page-title-inner -->
-				</div>
-				<!-- /.page-title-wrap -->
+		<section>
+			<div>
+				<img src="../media/banner/z2.jpg">
 			</div>
 			<!-- /.container -->
 		</section>
+
 		<!-- /#page-header -->
 
 
@@ -56,26 +49,68 @@
 
 			<div class="container">
 				<div>
-					<form role="form">
+					<form role="form" th:action="@{/posts/__${action}__}" th:object="${post}" method="post"
+						autocomplete="off" class="needs-validation" enctype="multipart/form-data" novalidate>
+						<input type="hidden" th:field="*{id}">
+
+
 						<div class="form-group">
 							<label for="ejemplo_email_1" style="color: #c7f012">Título</label>
-							<input type="email" class="form-control" id="ejemplo_email_1"
+							<input type="text" class="form-control" th:field="*{title}" id="ejemplo_email_1"
 								placeholder="Introduzca título">
 						</div>
 						<div class="form-group">
-							<label for="exampleFormControlTextarea1" style="color: #c7f012">Descripcion</label>
-							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+							<label for="exampleFormControlTextarea1" style="color: #c7f012">Introducción</label>
+							<textarea class="form-control" id="exampleFormControlTextarea1" th:field="*{introduction}" rows="3"></textarea>
 						</div>
 
-						<div>
-							<label for="autor" style="color: #c7f012">Seleccione seccion</label>
 
-							<select class="form-select" id="">
-								<option>
+						<script type="text/javascript">
+							function ShowHideDiv() {
+								var dvAnimal = document.getElementById("dvAnimal");
+								var dvPark = document.getElementById("dvPark");
+								var animal = document.getElementById("animal");
+								var park = document.getElementById("park");
+
+								if (animal.checked) {
+									dvAnimal.style.display = "block";
+									dvPark.style.display = "none";
+								} else if (park.checked) {
+									dvPark.style.display = "block";
+									dvAnimal.style.display = "none";
+								} else {
+									dvAnimal.style.display = "none";
+									dvPark.style.display = "none";
+								}
+							}
+						</script>
+						<label for="animal">
+							<input type="checkbox" id="animal" onclick="ShowHideDiv(this)" style="display: show" />
+							Agregar animal
+						</label>
+
+						<label for="park">
+							<input type="checkbox" id="park" onclick="ShowHideDiv(this)" style="display: show" />
+							Agregar reserva
+						</label>
+						</br>
+						<div id="dvAnimal" style="display: none">
+							<select th:field=*{animal} class="form-select" id="animal">
+								<option selected value="">ANIMALES</option>
+								<option th:each="animal:${animals}" th:text="${animal.name}" th:value="${animal.id}">
 								</option>
-
 							</select>
 						</div>
+						<div id="dvPark" style="display: none">
+							<select th:field=*{park} class="form-select" id="park">
+								<option selected value="">RESERVAS</option>
+								<option th:each="park:${parks}" th:text="${park.name}" th:value="${park.id}">
+								</option>
+							</select>
+						</div>
+
+
+
 						<!--<div>
 							<label for="autor" style="color: #c7f012">Seleccione Especie</label>
 
@@ -86,7 +121,7 @@
 							</select>
 						</div>-->
 
-
+						</br>
 						<button type="submit" class="btn btn-default">Cargar Posteo</button>
 					</form>
 				</div>
@@ -108,7 +143,7 @@
 
 	</div>
 
-	
+
 </body>
 
 </html>
