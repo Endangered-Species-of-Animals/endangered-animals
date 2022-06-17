@@ -8,7 +8,7 @@
 
 
 <body>
-
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
     <header th:replace="fragments/header :: header"></header>
     <section id="beyond">
 
@@ -21,7 +21,7 @@
                         <div th:if="${error}" th:text="${error}" class="alert alert-danger shadow text-center"></div>
                         <div th:if="${logout}" th:text="${logout}" class="alert alert-success shadow text-center"></div>
 
-                        <div class="card text-center shadow">
+                        <div class=" text-center ">
                             <div class="card-header">
                                 <h3>Login</h3>
                             </div>
@@ -40,7 +40,9 @@
                                             class="form-control" required />
                                         <div class="invalid-feedback text-start">Password is required</div>
                                     </div>
-
+                                <form action="?" method="POST">
+                                        <div class="g-recaptcha" data-sitekey="6Lfc73YgAAAAAMM4iqcpSuQpVw568KNBXKnW1nGO"></div>
+                                </form>
                                     <div class="form-group d-grid gap-2">
                                         <button class="btn btn-success" type="submit">Send</button>
                                     </div>
