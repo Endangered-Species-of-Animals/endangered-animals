@@ -3,7 +3,11 @@
 
 <head th:replace="fragments/head :: head"></head>
 
+
 <body class="strategy-zoombie" data-style="default">
+
+=======
+<body>
 
     <header th:replace="fragments/header :: header"></header>
 
@@ -15,22 +19,32 @@
 
 
 
+
         <!--=========================-->
         <!--=        Banner         =-->
         <!--=========================-->
 
         <section data-bg-image="../media/banner/2.jpg">
+
+        <section data-bg-image="../media/background/12.jpg">
+
             <div class="page-title-wrap">
                 <div class="page-title-inner">
                     <hr />
                     <br>
+
                     <h1 class="text-center" style="color: #c7f012">Lista de Especies</h1>
 
                 </div>
                 <!-- /.page-title-inner -->
+=======
+                    <h1 class="text-center" style="color: #c7f012">Lista especie</h1>
+                </div>
+
             </div>
 
         </section>
+
 
 
 
@@ -86,6 +100,105 @@
 
     </div>
     <footer th:replace="fragments/footer :: footer"></footer>
+
+=======
+        <!--seguir luego -->
+        <div class="layout-container layout-container--centered bg-grey-cool u--padding-top-lg u--padding-bottom-md u--margin-bottom-lg">
+            <article id="taxonomy" class="card card--1n">
+                <h2 class="card__heading card__icon card__icon--taxonomy">Taxonomy</h2>
+                <div class="layout-card--thirds species-taxonomy">
+                    <div class="layout-card--thirds__third">
+                        <h3 class="heading">Kingdom</h3>
+                        <p class="card__data card__data--key card__data--accent"><a
+                                href="/es/search?taxonomies=100003&amp;searchType=species"><strong>Animalia</strong></a>
+                        </p>
+                    </div>
+                    <div class="layout-card--thirds__third">
+                        <h3 class="heading">Phylum</h3>
+                        <p class="card__data card__data--key card__data--accent"><a
+                                href="/es/search?taxonomies=100023&amp;searchType=species"><strong>Arthropoda</strong></a>
+                        </p>
+                    </div>
+                    <div class="layout-card--thirds__third">
+                        <h3 class="heading">Class</h3>
+                        <p class="card__data card__data--key card__data--accent"><a
+                                href="/es/search?taxonomies=100071&amp;searchType=species"><strong>Arachnida</strong></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="layout-card--thirds species-taxonomy">
+                    <div class="layout-card--thirds__third">
+                        <h3 class="heading">Order</h3>
+                        <p class="card__data card__data--key card__data--accent"><a
+                                href="/es/search?taxonomies=100348&amp;searchType=species"><strong>Scorpiones</strong></a>
+                        </p>
+                    </div>
+                    <div class="layout-card--thirds__third">
+                        <h3 class="heading">Family</h3>
+                        <p class="card__data card__data--key card__data--accent"><a
+                                href="/es/search?taxonomies=196521&amp;searchType=species"><strong>Buthidae</strong></a>
+                        </p>
+                    </div>
+                    <div class="layout-card--thirds__third">
+                        <h3 class="heading">Genus</h3>
+                        <p class="card__data card__data--key card__data--accent"><a
+                                href="/es/search?taxonomies=21460793&amp;searchType=species"><strong>Lychas</strong></a>
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div class="card__summary summary" tabindex="0" role="button" aria-expanded="true"
+                        aria-controls="taxonomy-details">Taxonomy in detail</div>
+                    <div id="taxonomy-details" class="card__details details">
+                        <div class="layout-card--split">
+                            <div class="layout-card--split__minor">
+                                <h4 class="heading">Scientific name</h4>
+                                <p class="card__data card__data--std card__data--accent"><span><em>Lychas braueri</em>
+                                        <em></em><em></em></span></p>
+                            </div>
+                            <div class="layout-card--split__major">
+                                <h4 class="heading">Authority</h4>
+                                <p class="card__data card__data--std card__data--accent">(Kraepelin, 1896)</p>
+                            </div>
+                        </div>
+                        <div class="layout-card--split">
+                            <div class="layout-card--split__minor">
+                                <h4 class="heading">Synonyms</h4>
+                            </div>
+                            <div class="layout-card--split__major">
+                                <h4 class="heading">Common names</h4>
+                                <div>
+                                    <h5 class="text-body u--margin-top-sm">English</h5>
+                                    <p class="card__data card__data--std card__data--accent">Seychelles forest scorpion
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layout-card--split">
+                            <div class="layout-card--split__minor">
+                                <h4 class="heading">Taxonomic sources</h4>
+                                <div class="text-body"></div>
+                                <h4 class="heading">Identification Information</h4>
+                                <div class="text-body"></div>
+                            </div>
+                            <div class="layout-card--split__major">
+                                <h4 class="heading">Taxonomic notes</h4>
+                                <div class="text-body">The genus <em>Lychas </em>currently includes several species that
+                                    are
+                                    thought to belong to other genera. Accordingly, the relationships of this species
+                                    are
+                                    currently uncertain.</div>
+                                <div class="text-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+
+
+        <footer th:replace="fragments/footer :: footer"></footer>
 
 
 </body>

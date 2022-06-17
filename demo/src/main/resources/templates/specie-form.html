@@ -10,36 +10,24 @@
 
     <header th:replace="fragments/header :: header"></header>
 
-
-    
     <a href="#main_content" data-type="section-switch" class="return-to-top back-top"><i
             class="fa fa-chevron-up"></i></a>
 
     <div id="main_content">
 
-
         
-
-
-
-        <!--=========================-->
-        <!--=        Banner         =-->
-        <!--=========================-->
-        <section>
-            <div>
-                <img src="../media/banner/44.jpg">
+        <section data-bg-image="../media/background/12.jpg">
+            <div class="page-title-wrap" >
+                <div class="page-title-inner">
+                    <hr/>
+                    <br>
+                    <h1 class="text-center" style="color: #c7f012">Agregar una especie</h1>
+                </div>
             </div>
-            <!-- /.container -->
+            
         </section>
-        <!-- /#page-header -->
 
-        <!--==============================-->
-        <!--=        Game Review         =-->
-        <!--==============================-->
-
-
-
-        <section id="footer-three" class="section-padding">
+        <section class=" blog-grid">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-sm-12">
@@ -79,11 +67,11 @@
                                             <input type="text" class="form-control" id="formGroupExampleInput2" th:field="*{genus}"
                                                 placeholder=" Ingrese género ">
                                         </div>
-
+                                        <br>
                                         <button type="submit"  class="btn btn-success">Añadir Especie</button>
                                     </form>
                                     <!-- /.col-md-8 -->
-
+                                    
                                 </div>
                             </div>
                         </div>
