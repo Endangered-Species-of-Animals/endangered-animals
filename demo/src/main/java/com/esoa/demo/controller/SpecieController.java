@@ -31,7 +31,7 @@ public class SpecieController {
 
         if (inputFlashMap != null) mav.addObject("success", inputFlashMap.get("success"));
 
-        mav.addObject("specie", specieService.getAll());
+        mav.addObject("species", specieService.getAll());
         return mav;
     }
 //    @PreAuthorize("hasRole('ADMIN')")

@@ -3,10 +3,92 @@
 
 <head th:replace="fragments/head :: head"></head>
 
-<body>
-<header th:replace="fragments/header :: header"></header>
-<footer th:replace="fragments/footer :: footer"></footer>
+<body class="strategy-zoombie" data-style="default">
+
+    <header th:replace="fragments/header :: header"></header>
+
+    <a href="#main_content" data-type="section-switch" class="return-to-top back-top"><i
+            class="fa fa-chevron-up"></i></a>
+
+    <div id="main_content">
+
+
+
+
+        <!--=========================-->
+        <!--=        Banner         =-->
+        <!--=========================-->
+
+        <section data-bg-image="../media/banner/2.jpg">
+            <div class="page-title-wrap">
+                <div class="page-title-inner">
+                    <hr />
+                    <br>
+                    <h1 class="text-center" style="color: #c7f012">Lista de Especies</h1>
+
+                </div>
+                <!-- /.page-title-inner -->
+            </div>
+
+        </section>
+
+
+
+
+        <section class="blog-grid">
+
+            <div class="container mt-5">
+                <!--th:if="${specie.isEmpty()}">-->
+
+                <div>
+                    <h3> Debe ingresar una especie</h3>
+
+                    <button type="button" class="btn btn-success"><a th:href="@{/species/form}"
+                            style="color: #ffffff">Crear especie.</a></button>
+                </div>
+                <div class="col-lg-4 col-md-6 blog-grid">
+                    <div th:each="specie : ${species}" class="card"
+                        style="width: 18rem;">
+                        <!--<a th:href="@{/species/form}" class="rt-link">Crear publicación.</a>-->
+
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${specie.name}"></h5>
+                            <!--th:text="${specie.name}">-->
+                        </div>
+                        <ul class="">
+                            
+                            <h6>Reino<li class="list-item" th:text="${specie.kingdom}" style="color: #fd0707"></li></h6>
+                            <!--th:text="${specie.kingdom}">-->
+                            
+                            <h6>Phylum<li class="list-item" th:text="${specie.phylum}" style="color: #f10000"></li></h6>
+                            <!--th:text="${specie.phylum}">-->
+                            
+                            <h6>Orden<li class="list-item" th:text="${specie.order}" style="color: #f10000"></li></h6>
+                            <!--th:text="${specie.order}">-->
+                            
+                            <h6>Familia<li class="list-item" th:text="${specie.family}" style="color: #f10000"></li></h6>
+                            <!--th:text="${specie.family}">-->
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Ver todos los Mamiferos</a>
+                           
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+
+    </div>
+    <footer th:replace="fragments/footer :: footer"></footer>
+
 
 </body>
+
 
 </html>
