@@ -2,7 +2,7 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-	<head th:replace="fragments/head :: head"></head>
+<head th:replace="fragments/head :: head"></head>
 
 
 <body class="strategy-zoombie" data-bg-image="media/blog/57.jpg" data-style="default">
@@ -16,15 +16,15 @@
 
 
 
-		
+
 
 
 
 		<!--=========================-->
 		<!--=        Banner         =-->
 		<!--=========================-->
-		
-        <section id="page-header" data-bg-image="media/banner/19.jpg">
+
+		<section id="page-header" data-bg-image="media/banner/19.jpg">
 			<div class="container">
 				<div class="page-title-wrap">
 					<div class="page-title-inner">
@@ -38,41 +38,101 @@
 			</div>
 			<!-- /.container -->
 		</section>
+		<!--<div class="container">
+			<div class="row mt-5">
+				<div class="blog contain">
+					<div th:if="${success}" th:text="${success}" class="alert alert-success" role="alert"></div>
+	
+					<div th:if="${persons.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
+						You must enter people.
+						<a th:href="@{/posts/form}" class="rt-link">Crear publicación.</a>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+	
+					<div th:unless="${persons.isEmpty()}" class="table-responsive">
+						<table class="table table-hover table-bordered">
+							<thead>
+							<tr class="table-dark">
+								<th>Nombre del animal</th>
+								<th>Descripción</th>
+								<th>Fecha de Data</th>
+								<th sec:authorize="hasRole('ADMIN')">Update</th>
+								<th sec:authorize="hasRole('ADMIN')">Delete</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr th:each="person : ${persons}">
+								<td th:text="${person.name}"></td>
+								<td th:text="${person.surname}"></td>
+								<td th:text="${#temporals.format(person.dateOfBirth, 'dd-MM-yyyy')}"></td>
+								<td sec:authorize="hasRole('ADMIN')">
+									<a class="btn btn-warning" th:href="@{/persons/form/__${person.id}__}">Update</a>
+								</td>
+								<td sec:authorize="hasRole('ADMIN')">
+									<form th:action="@{/persons/delete/__${person.id}__}" method="POST">
+										<button class="btn btn-danger" type="submit">Delete</button>
+									</form>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>-->
+
 		<!-- /#page-header -->
 
 
 
-     <section class="blog-grid pt__50 pb__50">
+		<section class="blog-grid pt__50 pb__50">
+
 			<div class="container">
-				<div class="row">
-        <div class="col-lg-4 col-md-6">
-            <div class="blog-post-grid">
-                <div class="featire-image">
-                    <a href="#"><img src="media/blog/70.jpg" alt="Blog Thumb"></a>
+				<div th:if="${post.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
+					Debe ingresar una publicación
+					<a th:href="@{/posts/form}" class="rt-link">Crear publicación.</a>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+				<div class="row" th:unless="${post.isEmpty()}">
+					<a th:href="@{/posts/form}" class="rt-link">Crear publicación.</a>
 
-                </div>
+					<div class="col-lg-4 col-md-6">
+						<div class="blog-post-grid" th:each="post : ${posts}">
 
-                <div class="post-type-icon"><i class="fa fa-picture-o"></i></div>
 
-                <div class="blog-content">
-                    <ul class="blog-meta">
-                        <li><i class="fa fa-user"></i><a href="#" class="admin">Admin</a></li>
-                        <li><i class="fa fa-tags"></i> <a href="#">Action,</a> <a href="#">Advancher</a></li>
-                        <li><i class="fa fa-calendar"></i><a href="#">20 Mar, 2018</a></li>
-                    </ul>
-                    <h3 class="blog-title"><a href="#">Red Dead Redemption 2 Microtransactions Ubisoft Talks PS5</a></h3>
 
-                    <p>
-                        And she went on planning to herself how she would manage it. They must go by the carrier, she thought and how funny it'll seem.
-                    </p>
+							<div class="featire-image">
+								<img th:src="@{/uploads/animals/__${animal.image}__}">
 
-                    <a href="#" class="tim-btn">Read More</a>
-                </div>
-                <!-- /.blog-content -->
-            </div>
-            <!-- /.blog-post-grid -->
-        </div>
-        <!-- /.col-lg-4 col-md-6 -->
+							</div>
+
+							<div class="post-type-icon"><i class="fa fa-picture-o"></i></div>
+
+							<div class="blog-content">
+								<ul class="blog-meta">
+
+									<!--<li><i class="fa fa-user"></i><a href="#" class="admin">Admin</a></li>
+									<li><i class="fa fa-tags"></i> <a href="#">Action,</a> <a href="#">Advancher</a>
+									</li>-->
+									<li th:text="${#temporals.format(post.dischargeDate, 'dd-MM-yyyy')}"><i
+											class="fa fa-calendar"></i></li>
+								</ul>
+								<h3 th:text="${post.title}" class="blog-title"></h3>
+
+								<p th:text="${post.introduction}">
+
+								</p>
+
+								<a th:href="@{/posts/details/__${post.id}__} " class="tim-btn">Ir a su publicación</a>
+								<!--<td sec:authorize="hasRole('ADMIN')">-->
+								<a th:href="@{/posts/update/__${post.id}__} " class="tim-btn">Editar</a>
+								<a th:href="@{/posts/deleted/__${post.id}__} " class="tim-btn">Eliminar</a>
+							</div>
+							<!-- /.blog-content -->
+						</div>
+						<!-- /.blog-post-grid -->
+					</div>
+					<!-- /.col-lg-4 col-md-6 -->
 
 
 

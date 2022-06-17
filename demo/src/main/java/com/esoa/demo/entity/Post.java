@@ -20,8 +20,8 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Lob
-    @Column(name = "post_description", nullable = false)
-    private String description;
+    @Column(name = "post_introduction", nullable = false)
+    private String introduction;
     @Column(name = "post_title", nullable = false)
     private String title;
     @Column(name = "post_discharge_date")
