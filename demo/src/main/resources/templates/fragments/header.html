@@ -1,5 +1,5 @@
-<header th:fragment="header" class="header header-one">
-    <header>
+<header th:fragment="header">
+    <header class="header header-one">
         <div class="top-menu">
             <div class="container">
                 <div class="top-menu-wrap">
@@ -7,11 +7,16 @@
                         <div class="col-md-8">
                             <div class="top-menu-left">
                                 <ul class="head-social-link">
-                                    <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="https://www.google.com/" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="https://www.facebook.com/" target="_blank"><i
+                                                class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://www.twitter.com/" target="_blank"><i
+                                                class="fa fa-twitter"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/" target="_blank"><i
+                                                class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="https://www.google.com/" target="_blank"><i
+                                                class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="https://www.instagram.com/" target="_blank"><i
+                                                class="fa fa-instagram"></i></a></li>
                                 </ul>
                                 <!-- /.head-social-link -->
                             </div>
@@ -34,15 +39,15 @@
                         <div class="col-md-4">
                             <ul class="user-link nav justify-content-end">
                                 <li>
-                                    <a th:href="@{/auth/login}" >
+                                    <a th:href="@{/auth/login}">
                                         <i class="fa fa-user"></i>
-                                        Login
+                                        Ingresar
                                     </a>
                                 </li>
                                 <li>
-                                    <a th:href="@{/auth/sign-up}" >
+                                    <a th:href="@{/auth/sign-up}">
                                         <i class="fa fa-sign-in"></i>
-                                        Sign Up
+                                        Registrarse
                                     </a>
                                 </li>
                             </ul>
@@ -79,9 +84,9 @@
                                 <li><a th:href="@{/contacts}">Sugerencias de usuario</a></li>
                             </ul>
                         </li>
-                        
+
                         <li><a th:href="@{/posts}">Publicaciones</a></li>
-                        
+
                         <li class="menu-item-has-children">
                             <a href="#">Desarrolladores</a>
 
@@ -91,8 +96,8 @@
                             </ul>
 
                         </li>
+
                         
-                        <li><a th:href="@{/posts}"> </a></li>
 
                         <!--
                         <li class="menu-item-has-children">
@@ -131,10 +136,13 @@
                             </ul>
                         </li>
                         -->
+                        <!--
                         <li class="nav-item search-btn">
                             <i class="fa fa-search"></i>
                         </li>
+                    -->
                     </ul>
+                    <!--
                     <div class="top-search-form">
                         <form action="#" class="search-form">
                             <input type="text" name="search" placeholder="Search....">
@@ -143,13 +151,118 @@
                                     class=" fireJqueryPlugin3Canvas0"></canvas></div>
                         </form>
                     </div>
+                    -->
                 </div>
                 <!-- /.nav-wrap -->
             </div>
             <!-- /.container -->
         </div>
         <!-- /.nav -->
+
+
+
+
+
+
     </header>
     <!-- /#header -->
+
+    <!--================================-->
+    <!--=        Mobile Navbar         =-->
+    <!--================================-->
+    <header id="mobile-nav-wrap">
+        <div class="mob-header-inner d-flex justify-content-between">
+            <div id="mobile-logo" class="d-flex justify-content-start">
+                <a th:href="@{/}">
+                    <img src="../assets/img/logo.png" alt="Site Logo">
+                </a>
+            </div>
+
+            <ul class="user-link nav justify-content-end">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#signInModal">
+                        <i class="fa fa-user"></i>
+                        Ingresar
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#signUpModal">
+                        <i class="fa fa-sign-in"></i>
+                        Registrarse
+                    </a>
+                </li>
+            </ul>
+
+            <div id="nav-toggle" class="nav-toggle hidden-md">
+                <div class="toggle-inner">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- /.mob-header-inner -->
+    </header>
+    <!-- /#mobile-header -->
+
+    <div class="mobile-menu-inner">
+
+        <div class="close-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav id="accordian">
+            <ul class="accordion-menu">
+                <li>
+                    <a href="#0" class="dropdownlink">Admin</a>
+                    <ul class="submenuItems">
+                        <li><a th:href="@{/species}">Lista de especies</a></li>
+                        <li><a th:href="@{/animals}">Lista de animales</a></li>
+                        <li><a th:href="@{/parks}">Lista de reservas</a></li>
+                        <li><a th:href="@{/posts/form}">Crear publicacion</a></li>
+                        <li><a th:href="@{/users/form}">Crear usuario</a></li>
+                        <li><a th:href="@{/contacts}">Sugerencias de usuario</a></li>
+                    </ul>
+                </li>
+                <li><a th:href="@{/posts}">Publicaciones</a></li>
+                <li class="menu-item-has-children">
+                    <a href="#">Desarrolladores</a>
+
+                    <ul class="submenuItems">
+                        <li><a href="desarrolladores.html">SWIFT</a></li>
+                        <li><a href="developer.html">DEVELOPER</a></li>
+                    </ul>
+
+                </li>
+
+
+                <li class="menu-item-has-children">
+                    <a href="#">Comunidad</a>
+
+                    <ul class="submenuItems">
+                        <li><a href="comunidad.html">Galeria de FanArt</a></li>
+
+                        <li><a href="foro.html">Foro</a></li>
+                    </ul>
+
+                </li>
+                
+        </nav>
+        <!-- /#moble-search -->
+
+        <ul class="footer-social-link">
+            <li class="fb-bg"><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li class="in-bg"><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li class="tw-bg"><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li class="gp-bg"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+
+        <a th:href="@{/}">
+            <img src="../assets/img/logo.png" alt="Site Logo">
+        </a>
+
+    </div>
 
 </header>
