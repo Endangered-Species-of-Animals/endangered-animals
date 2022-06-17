@@ -86,23 +86,23 @@
 
 
 		<section class="blog-grid pt__50 pb__50">
-
+			<!--th:if="${post.isEmpty()}"-->
 			<div class="container">
-				<div th:if="${post.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
+				<div  class="alert alert-info alert-dismissible fade show" role="alert">
 					Debe ingresar una publicación
 					<a th:href="@{/posts/form}" class="rt-link">Crear publicación.</a>
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>
-				<div class="row" th:unless="${post.isEmpty()}">
+				</div>   <!-- th:unless="${post.isEmpty()}"-->
+				<div class="row">
 					<a th:href="@{/posts/form}" class="rt-link">Crear publicación.</a>
 
 					<div class="col-lg-4 col-md-6">
-						<div class="blog-post-grid" th:each="post : ${posts}">
+						<div class="blog-post-grid" th:each="post : ${post}">
 
 
 
 							<div class="featire-image">
-								<img th:src="@{/uploads/animals/__${animal.image}__}">
+								<img th:src="@{/uploads/animals/__${post.animal.image}__}">
 
 							</div>
 
@@ -136,5 +136,9 @@
 
 
 
+
 		</section>
 		<!-- /#game-review -->
+	</div>
+	<footer th:replace="fragments/footer :: footer"></footer>
+</body>
