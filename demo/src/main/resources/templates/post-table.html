@@ -24,99 +24,52 @@
 		<!--=        Banner         =-->
 		<!--=========================-->
 
-		<section id="page-header" data-bg-image="media/banner/19.jpg">
-			<div class="container">
-				<div class="page-title-wrap">
-					<div class="page-title-inner">
-						<h1></h1>
-						<h3>CARGAR ANIMAL</h3>
-						<span class="delemitter" data-bg-image="media/banner/s1.png"></span>
-					</div>
-					<!-- /.page-title-inner -->
-				</div>
-				<!-- /.page-title-wrap -->
-			</div>
-			<!-- /.container -->
-		</section>
-		<!--<div class="container">
-			<div class="row mt-5">
-				<div class="blog contain">
-					<div th:if="${success}" th:text="${success}" class="alert alert-success" role="alert"></div>
-	
-					<div th:if="${persons.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
-						You must enter people.
-						<a th:href="@{/posts/form}" class="rt-link">Crear publicación.</a>
-						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-					</div>
-	
-					<div th:unless="${persons.isEmpty()}" class="table-responsive">
-						<table class="table table-hover table-bordered">
-							<thead>
-							<tr class="table-dark">
-								<th>Nombre del animal</th>
-								<th>Descripción</th>
-								<th>Fecha de Data</th>
-								<th sec:authorize="hasRole('ADMIN')">Update</th>
-								<th sec:authorize="hasRole('ADMIN')">Delete</th>
-							</tr>
-							</thead>
-							<tbody>
-							<tr th:each="person : ${persons}">
-								<td th:text="${person.name}"></td>
-								<td th:text="${person.surname}"></td>
-								<td th:text="${#temporals.format(person.dateOfBirth, 'dd-MM-yyyy')}"></td>
-								<td sec:authorize="hasRole('ADMIN')">
-									<a class="btn btn-warning" th:href="@{/persons/form/__${person.id}__}">Update</a>
-								</td>
-								<td sec:authorize="hasRole('ADMIN')">
-									<form th:action="@{/persons/delete/__${person.id}__}" method="POST">
-										<button class="btn btn-danger" type="submit">Delete</button>
-									</form>
-								</td>
-							</tr>
-							</tbody>
-						</table>
-					</div>
+		<section data-bg-image="../media/background/12.jpg">
+			<div class="page-title-wrap">
+				<div class="page-title-inner">
+					<hr />
+					<br>
+					<h1 class="text-center" style="color: #c7f012">Lista de publicaciones</h1>
 				</div>
 			</div>
-		</div>-->
 
-		<!-- /#page-header -->
+		</section>
+
 
 
 
 		<section class="blog-grid pt__50 pb__50">
 			<!--th:if="${post.isEmpty()}"-->
 			<div class="container">
-				<div  class="alert alert-info alert-dismissible fade show" role="alert">
+				<div class="alert alert-info alert-dismissible fade show" role="alert">
 					Debe ingresar una publicación
 					<a th:href="@{/posts/form}" class="rt-link">Crear publicación.</a>
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>   <!-- th:unless="${post.isEmpty()}"-->
+				</div> <!-- th:unless="${post.isEmpty()}"-->
+				<a th:href="@{/posts/form}" class="rt-link">Crear publicación.</a>
 				<div class="row">
-					<a th:href="@{/posts/form}" class="rt-link">Crear publicación.</a>
-
-					<div class="col-lg-4 col-md-6">
-						<div class="blog-post-grid" th:each="post : ${post}">
+					<div class="col-lg-4 col-md-6" th:each="post : ${posts}">
 
 
+						<div class="blog-post-grid">
 
-							<div class="featire-image">
+
+
+							<div class="featire-image" th:if="${post.animal != null}">
 								<img th:src="@{/uploads/animals/__${post.animal.image}__}">
+							</div>
 
+							<div class="featire-image" th:if="${post.park != null}">
+								<img th:src="@{/uploads/parks/__${post.park.image}__}">
 							</div>
 
 							<div class="post-type-icon"><i class="fa fa-picture-o"></i></div>
 
 							<div class="blog-content">
-								<ul class="blog-meta">
+								<h3
+									th:text="${#temporals.format(__${post.dischargeDate}__, 'dd-MM-yyyy')}">
 
-									<!--<li><i class="fa fa-user"></i><a href="#" class="admin">Admin</a></li>
-									<li><i class="fa fa-tags"></i> <a href="#">Action,</a> <a href="#">Advancher</a>
-									</li>-->
-									<li th:text="${#temporals.format(post.dischargeDate, 'dd-MM-yyyy')}"><i
-											class="fa fa-calendar"></i></li>
-								</ul>
+								</h3>
 								<h3 th:text="${post.title}" class="blog-title"></h3>
 
 								<p th:text="${post.introduction}">
@@ -131,11 +84,11 @@
 							<!-- /.blog-content -->
 						</div>
 						<!-- /.blog-post-grid -->
+
+						<!-- /.col-lg-4 col-md-6 -->
+
+
 					</div>
-					<!-- /.col-lg-4 col-md-6 -->
-
-
-
 
 		</section>
 		<!-- /#game-review -->

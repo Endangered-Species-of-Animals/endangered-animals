@@ -34,7 +34,7 @@ public class AnimalController {
 
         if (inputFlashMap != null) mav.addObject("success", inputFlashMap.get("success"));
 
-        mav.addObject("animal", animalService.getAll());
+        mav.addObject("animals", animalService.getAll());
         return mav;
     }
 //    @PreAuthorize("hasRole('ADMIN')")

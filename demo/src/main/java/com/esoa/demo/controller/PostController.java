@@ -32,7 +32,7 @@ public class PostController {
 
         if (inputFlashMap != null) mav.addObject("success", inputFlashMap.get("success"));
 
-        mav.addObject("post", postService.getAll());
+        mav.addObject("posts", postService.getAll());
         return mav;
     }
 //    @PreAuthorize("hasRole('ADMIN')")
