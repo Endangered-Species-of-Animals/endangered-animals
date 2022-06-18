@@ -28,7 +28,7 @@ public class ParkController {
 
         if (inputFlashMap != null) mav.addObject("success", inputFlashMap.get("success"));
 
-        mav.addObject("park", parkService.getAll());
+        mav.addObject("parks", parkService.getAll());
         return mav;
     }
 //    @PreAuthorize("hasRole('ADMIN')")

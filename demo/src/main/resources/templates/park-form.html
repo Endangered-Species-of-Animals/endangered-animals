@@ -2,7 +2,7 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-	<head th:replace="fragments/head :: head"></head>
+<head th:replace="fragments/head :: head"></head>
 
 
 <body class="strategy-zoombie" data-bg-image="media/blog/57.jpg" data-style="default">
@@ -56,19 +56,42 @@
 
 			<div class="container">
 				<div>
-					<form role="form">
+					<form role="form" th:action="@{/parks/__${action}__}" th:object="${park}" method="post"
+						autocomplete="off" class="needs-validation" enctype="multipart/form-data" novalidate>
+						<input type="hidden" th:field="*{id}">
+
 						<div class="form-group">
 							<label for="ejemplo_email_1" style="color: #c7f012">Nombre de la Reserva</label>
-							<input type="email" class="form-control" id="ejemplo_email_1"
-								placeholder="Ingrese el nombre de la Reserva">
+							<input type="text" class="form-control" id="formGroupExampleInput" th:field="*{name}"
+								placeholder=" Nombre de la Reserva ">
 						</div>
 
+						<div class="mb-3">
+							<label for="kingdom" class="form-label" style="color: #c7f012"> Locacion </label>
+							<input type="text" class="form-control" id="formGroupExampleInput" th:field="*{location}"
+								placeholder=" Ubicación de la Reserva ">
+						</div>
+						<div class="form-group">
+							<label for="exampleFormControlTextarea1" style="color: #c7f012">Posición</label>
+							<input type="text" class="form-control" id="formGroupExampleInput" th:field="*{position}"
+								placeholder=" Posición de la Reserva ">
+						</div>
 						<div class="form-group">
 							<label for="exampleFormControlTextarea1" style="color: #c7f012">Descripcion</label>
-							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+							<textarea class="form-control" id="exampleFormControlTextarea1" th:field="*{description}"
+								rows="3"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="exampleFormControlTextarea1" style="color: #c7f012">Link de la Reserva</label>
+							<input type="text" class="form-control" id="formGroupExampleInput" th:field="*{link}"
+								placeholder=" Link de la Reserva ">
+						</div>
+						<div class="form-group">
+							<label for="photo" style="color: #c7f012" >Cargar Imagen</label>
+							<input  type="file" name="photo" accept="image/*">
 						</div>
 
-						<div>
+						<!--<div>
 							<label for="autor" style="color: #c7f012">Seleccione Categoria</label>
 
 							<select class="form-select" id="">
@@ -76,7 +99,7 @@
 								</option>
 
 							</select>
-						</div>
+						</div>-->
 
 						<button type="submit" class="btn btn-default">Cargar Posteo</button>
 					</form>
