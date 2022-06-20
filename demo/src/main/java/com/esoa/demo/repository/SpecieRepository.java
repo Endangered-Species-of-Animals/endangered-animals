@@ -14,6 +14,8 @@ import java.util.List;
 public interface SpecieRepository extends JpaRepository<Specie,Integer> {
 
     boolean existsByName(String name);
+    boolean existsByOrder(String order);
+    boolean existsByGenus(String genus);
 
     @Modifying
     @Query("UPDATE Specie s SET s.deleted = false WHERE s.id = ?1")

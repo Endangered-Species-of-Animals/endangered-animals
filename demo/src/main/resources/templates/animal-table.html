@@ -14,16 +14,6 @@
 
     <div id="main_content">
 
-
-
-
-
-
-
-        <!--=========================-->
-        <!--=        Banner         =-->
-        <!--=========================-->
-
         <section data-bg-image="../media/background/12.jpg">
             <div class="page-title-wrap">
                 <div class="page-title-inner">
@@ -45,7 +35,7 @@
                     <a th:href="@{/animals/form}" class="rt-link">Crear animal</a>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div> <!-- th:unless="${post.isEmpty()}"-->
-                <a th:href="@{/animas/form}" class="rt-link">Crear animal.</a>
+                <a th:href="@{/animals/form}" class="rt-link">Crear animal.</a>
                 <div class="row">
                     <div class="col-lg-4 col-md-6" th:each="animal : ${animals}">
 
@@ -62,7 +52,7 @@
                             <div class="blog-content">
 
                                 <h3 th:text="${animal.name}" class="blog-title"></h3>
-                                <h3 th:text="${animal.scientific_name}"></h3>
+                                <h3 th:text="${animal.scientificName}"></h3>
                                 <h3 th:text="${animal.category}"></h3>
 
                                 <!--<td sec:authorize="hasRole('ADMIN')">-->

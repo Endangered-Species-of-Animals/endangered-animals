@@ -9,7 +9,7 @@ import org.hibernate.annotations.SQLDelete;
 
 @Entity
 @Table(name = "park",indexes = {@Index(name = "idx_name", columnList = "park_name")})
-@SQLDelete(sql = "UPDATE park SET deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE park SET park_deleted = true WHERE id = ?")
 @Getter
 @Setter
 @NoArgsConstructor

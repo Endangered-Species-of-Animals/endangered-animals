@@ -11,7 +11,7 @@ import org.hibernate.annotations.SQLDelete;
 
 @Entity
 @Table(name = "post")
-@SQLDelete(sql = "UPDATE post SET deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE post SET post_deleted = true WHERE id = ?")
 @Getter
 @Setter
 @NoArgsConstructor

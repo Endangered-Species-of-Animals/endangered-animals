@@ -30,7 +30,7 @@ public class AnimalService {
         animal.setDescription(dto.getDescription());
         animal.setDischargeDate(LocalDate.now());
         animal.setCategory(dto.getCategory());
-        animal.setScientific_name(dto.getScientific_name());
+        animal.setScientificName(dto.getScientificName());
         animal.setSpecie(dto.getSpecie());
         animal.setDeleted(false);
         if (!photo.isEmpty()){
@@ -60,7 +60,7 @@ public class AnimalService {
         animal.setDescription(dto.getDescription());
         animal.setDischargeDate(dto.getDischargeDate());
         animal.setCategory(dto.getCategory());
-        animal.setScientific_name(dto.getScientific_name());
+        animal.setScientificName(dto.getScientificName());
         animal.setSpecie(dto.getSpecie());
         animal.setDeleted(false);
 
