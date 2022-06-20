@@ -1,5 +1,6 @@
 package com.esoa.demo.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -15,48 +16,40 @@ import lombok.RequiredArgsConstructor;
 public class ContactService {
 
     private final ContactRepository contactRepository;
-    
 
     @Transactional
-    public void create(Contact dto){
-        /*if (contactRepository.existsByNameAndDescription(dto.getUser(), dto.getDescription()))
-            throw new IllegalArgumentException("Error!");*/
-        
+    public void create(Contact dto) {
+        /*
+         * if (contactRepository.existsByNameAndDescription(dto.getUser(),
+         * dto.getDescription()))
+         * throw new IllegalArgumentException("Error!");
+         */
+
         Contact contact = new Contact();
+        contact.setTitle(dto.getTitle());
         contact.setUser(dto.getUser());
         contact.setDescription(dto.getDescription());
-        contact.setDischargeDate(dto.getDischargeDate());
+        contact.setDischargeDate(LocalDate.now());
         contact.setDeleted(false);
-        
 
         contactRepository.save(contact);
 
     }
 
-    @Transactional
-    public void update(Contact dto){
-        Contact contact = contactRepository.findById(dto.getId()).get();
-        contact.setUser(dto.getUser());
-        contact.setDescription(dto.getDescription());
-        contact.setDischargeDate(dto.getDischargeDate());
-        contact.setDeleted(false);
-        contactRepository.save(contact);
-    }
 
     @Transactional(readOnly = true)
-    public Contact getById(Integer id){
+    public Contact getById(Integer id) {
         return contactRepository.findById(id).get();
     }
 
     @Transactional(readOnly = true)
-    public List<Contact> getAll(){
+    public List<Contact> getAll() {
         return contactRepository.findAll();
     }
 
-   
     @Transactional(readOnly = true)
-    public void enableById(Integer id){
-        contactRepository.enableById(id);  
+    public void enableById(Integer id) {
+        contactRepository.enableById(id);
     }
 
     @Transactional

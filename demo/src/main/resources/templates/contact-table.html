@@ -1,12 +1,55 @@
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/head :: head"></head>
 
-<body>
-<header th:replace="fragments/header :: header"></header>
-<footer th:replace="fragments/footer :: footer"></footer>
 
+<body class="strategy-zoombie" data-bg-image="media/blog/57.jpg" data-style="default">
+
+    <header th:replace="fragments/header :: header"></header>
+
+    <a href="#main_content" data-type="section-switch" class="return-to-top back-top"><i
+            class="fa fa-chevron-up"></i></a>
+
+    <div id="main_content">
+
+        <section data-bg-image="../media/background/12.jpg">
+            <div class="page-title-wrap">
+                <div class="page-title-inner">
+                    <hr />
+                    <br>
+                    <h1 class="text-center" style="color: #c7f012">Lista de comentarios y sugerencias</h1>
+                </div>
+            </div>
+
+        </section>
+
+
+        <section class="blog-grid pt__50 pb__50">
+            <!--th:if="${post.isEmpty()}"-->
+            <div class="container">
+                <div class="row" th:each="contact : ${contacts}">
+
+
+                    <div class="blog-post-grid">
+                        <h3 th:text="${contact.title}" class="blog-title"></h3>
+                        <h3 th:text="${contact.DischargeDate}"></h3>
+                        <!--<h3 th:text="${contact.user.name}"></h3>-->
+                        <h3 th:text="${contact.description}"></h3>
+
+                    </div>
+                    <!-- /.blog-content -->
+                </div>
+                <!-- /.blog-post-grid -->
+
+                <!-- /.col-lg-4 col-md-6 -->
+
+
+            </div>
+
+        </section>
+        <!-- /#game-review -->
+    </div>
+    <footer th:replace="fragments/footer :: footer"></footer>
 </body>
-
-</html>

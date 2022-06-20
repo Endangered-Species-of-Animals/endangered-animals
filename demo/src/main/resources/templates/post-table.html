@@ -66,10 +66,8 @@
 							<div class="post-type-icon"><i class="fa fa-picture-o"></i></div>
 
 							<div class="blog-content">
-								<h3
-									th:text="${#temporals.format(__${post.dischargeDate}__, 'dd-MM-yyyy')}">
+								<h3 th:text="${post.DischargeDate}"></h3>
 
-								</h3>
 								<h3 th:text="${post.title}" class="blog-title"></h3>
 
 								<p th:text="${post.introduction}">

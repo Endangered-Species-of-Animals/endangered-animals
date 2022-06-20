@@ -34,7 +34,7 @@ public class ContactController {
 
         if (inputFlashMap != null) mav.addObject("success", inputFlashMap.get("success"));
 
-        mav.addObject("contact", contactService.getAll());
+        mav.addObject("contacts", contactService.getAll());
         return mav;
     }
 
@@ -56,7 +56,7 @@ public class ContactController {
 
     @PostMapping("/create")
     public RedirectView create(Contact dto, RedirectAttributes attributes) {
-        RedirectView redirect = new RedirectView("/index");
+        RedirectView redirect = new RedirectView("/");
 
         try {
             contactService.create(dto);
