@@ -1,11 +1,83 @@
 <!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/head :: head"></head>
 
-<body>
-<header th:replace="fragments/header :: header"></header>
-<footer th:replace="fragments/footer :: footer"></footer>
+
+<body class="strategy-zoombie" data-bg-image="media/blog/57.jpg" data-style="default">
+
+
+
+    <a href="#main_content" data-type="section-switch" class="return-to-top back-top"><i
+            class="fa fa-chevron-up"></i></a>
+
+    <div id="main_content">
+
+
+
+        <header th:replace="fragments/header :: header"></header>
+
+
+
+        <!--=========================-->
+        <!--=        Banner         =-->
+        <!--=========================-->
+        <section>
+            <div>
+                <img src="../media/banner/z2.jpg">
+            </div>
+            <!-- /.container -->
+        </section>
+
+        <!-- /#page-header -->
+
+
+
+
+        <!--==============================-->
+        <!--=        Game Review         =-->
+        <!--==============================-->
+        <section id="footer-three" class="pt__50 pb__50">
+
+            <div class="container">
+                <div>
+                    <form role="form" th:action="@{/contacts/__${action}__}" th:object="${contact}" method="post"
+                        autocomplete="off" class="needs-validation" enctype="multipart/form-data" novalidate>
+                        <input type="hidden" th:field="*{id}">
+
+                        <div class="form-group">
+                            <label for="ejemplo_email_1" style="color: #c7f012">Título</label>
+                            <input type="text" class="form-control" th:field="*{title}" id="ejemplo_email_1"
+                                placeholder="Introduzca tema a tratar">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1" style="color: #c7f012">Descripción</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" th:field="*{description}"
+                                rows="3"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-default">Enviar comentario</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </section>
+        <!-- /#game-review -->
+
+
+
+        <!--==============++============-->
+        <!--=        Footer One        =-->
+        <!--================++==========-->
+
+        <!-- /#footer-three -->
+
+        <footer th:replace="fragments/footer :: footer"></footer>
+
+    </div>
+
 
 </body>
 

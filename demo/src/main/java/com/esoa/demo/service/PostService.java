@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class PostService {
         Post post = new Post();
         post.setTitle(dto.getTitle());
         post.setIntroduction(dto.getIntroduction());
-        post.setDischargeDate(dto.getDischargeDate());
+        post.setDischargeDate(LocalDate.now());
 //if
         post.setAnimal(dto.getAnimal());
 //if
@@ -37,7 +38,7 @@ public class PostService {
 
         Post post = postRepository.findById(dto.getId()).get();
         post.setIntroduction(dto.getIntroduction());
-        post.setDischargeDate(dto.getDischargeDate());
+        post.setDischargeDate(LocalDate.now());
 //if
         post.setAnimal(dto.getAnimal());
 //if
