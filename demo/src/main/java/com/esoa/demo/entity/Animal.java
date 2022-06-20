@@ -15,7 +15,7 @@ import org.hibernate.annotations.SQLDelete;
 
 @Entity
 @Table(name = "animal", indexes = {@Index(name = "idx_name", columnList = "animal_name")})
-@SQLDelete(sql = "UPDATE animal SET deleted = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE animal SET animal_deleted = true WHERE id = ?")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,7 +26,7 @@ public class Animal {
     @Column(name = "animal_name", nullable = false)
     private String name;
     @Column(name = "animal_scientific_name", nullable = false)
-    private String scientific_name;
+    private String scientificName;
     @Lob
     @Column(name = "animal_description", nullable = false)
     private String description;

@@ -4,10 +4,7 @@
 <head th:replace="fragments/head :: head"></head>
 
 
-<body class="strategy-zoombie" data-style="default">
-
-=======
-<body>
+<body data-style="default">
 
     <header th:replace="fragments/header :: header"></header>
 
@@ -16,80 +13,98 @@
 
     <div id="main_content">
 
-
-
-
-
-        <!--=========================-->
-        <!--=        Banner         =-->
-        <!--=========================-->
-
-        <section data-bg-image="../media/banner/2.jpg">
-
         <section data-bg-image="../media/background/12.jpg">
-
             <div class="page-title-wrap">
                 <div class="page-title-inner">
                     <hr />
                     <br>
-
-                    <h1 class="text-center" style="color: #c7f012">Lista de Especies</h1>
-
+                    <h1 class="text-center title" style="color: #c7f012">Lista de Especies</h1>
                 </div>
-                <!-- /.page-title-inner -->
-=======
-                    <h1 class="text-center" style="color: #c7f012">Lista especie</h1>
-                </div>
-
             </div>
 
         </section>
 
+        <section class="blog-grid pt__50 pb__50">
 
-
-
-
-        <section class="blog-grid">
-
-            <div class="container mt-5">
-                <!--th:if="${specie.isEmpty()}">-->
-
-                <div>
-                    <h3> Debe ingresar una especie</h3>
-
-                    <button type="button" class="btn btn-success"><a th:href="@{/species/form}"
-                            style="color: #ffffff">Crear especie.</a></button>
-                </div>
-                <div class="col-lg-4 col-md-6 blog-grid">
-                    <div th:each="specie : ${species}" class="card"
-                        style="width: 18rem;">
-                        <!--<a th:href="@{/species/form}" class="rt-link">Crear publicación.</a>-->
-
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${specie.name}"></h5>
-                            <!--th:text="${specie.name}">-->
-                        </div>
-                        <ul class="">
-                            
-                            <h6>Reino<li class="list-item" th:text="${specie.kingdom}" style="color: #fd0707"></li></h6>
-                            <!--th:text="${specie.kingdom}">-->
-                            
-                            <h6>Phylum<li class="list-item" th:text="${specie.phylum}" style="color: #f10000"></li></h6>
-                            <!--th:text="${specie.phylum}">-->
-                            
-                            <h6>Orden<li class="list-item" th:text="${specie.order}" style="color: #f10000"></li></h6>
-                            <!--th:text="${specie.order}">-->
-                            
-                            <h6>Familia<li class="list-item" th:text="${specie.family}" style="color: #f10000"></li></h6>
-                            <!--th:text="${specie.family}">-->
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="card-link">Ver todos los Mamiferos</a>
-                           
+            <div class="container" >
+                <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                th:if="${species.isEmpty()}">
+                    <div class="row ">
+                        <div class="col-3 text-bottom">
+                            <h5> 
+                                Debe ingresar una 
+                                <a th:href="@{/species/form}">especie</a>
+                            </h5>
                         </div>
                     </div>
                 </div>
 
+                
+                <div class="" style="padding-bottom: 10px;">
+                    <div th:unless="${species.isEmpty()}" class="">
+                        <div class="">
+                            <a th:href="@{/species/form}" class="tim-btn read-btn">
+                                Crear especies
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-grid">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6" th:each="specie : ${species}">
+                            <div class="blog-post-grid">
+                                <div class="container">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title" th:text="${specie.name}" style="color: #c7f012"></h5>
+                                    </div>
+                                    <ul class="card-text">
+                                        <h6>
+                                            Reino
+                                            <li class="list-item" th:text="${specie.kingdom}" style="color: #c7f012">
+                                            </li>
+                                        </h6>
+                                        <h6>
+                                            Phylum
+                                            <li class="list-item" th:text="${specie.phylum}" style="color: #c7f012">
+                                            </li>
+                                        </h6>
+                                        <h6>
+                                            Orden
+                                            <li class="list-item" th:text="${specie.order}" style="color: #c7f012">
+                                            </li>
+                                        </h6>
+                                        <h6>
+                                            Familia
+                                            <li class="list-item" th:text="${specie.family}" style="color: #c7f012">
+                                            </li>
+                                        </h6>
+                                        <h6>
+                                            Genus
+                                            <li class="list-item" th:text="${specie.genus}" style="color: #c7f012">
+                                            </li>
+                                        </h6>
+                                    </ul>
+                                    <!--<td sec:authorize="hasRole('ADMIN')">-->
+                                    <div class="row" style="padding-top: 5px;">
+                                        <div style="padding-right: 15px;padding-left: 15px;">
+                                            <a th:href="@{/species/update/__${specie.id}__} " class="tim-btn read-btn">Editar</a>
+                                        </div>
+                                        <div style="padding-left: 5px;">
+                                            <form th:action="${specie.deleted} ? @{/species/enable/__${specie.id}__} : @{/species/delete/__${specie.id}__}"
+                                            method="post">
+                                                <button th:text="${specie.deleted} ? 'Dar de Alta' : 'Dar de Baja'" 
+                                                class="tim-btn read-btn" type="submit">
+                                                </button>
+                                            </form>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
@@ -101,104 +116,8 @@
     </div>
     <footer th:replace="fragments/footer :: footer"></footer>
 
-=======
-        <!--seguir luego -->
-        <div class="layout-container layout-container--centered bg-grey-cool u--padding-top-lg u--padding-bottom-md u--margin-bottom-lg">
-            <article id="taxonomy" class="card card--1n">
-                <h2 class="card__heading card__icon card__icon--taxonomy">Taxonomy</h2>
-                <div class="layout-card--thirds species-taxonomy">
-                    <div class="layout-card--thirds__third">
-                        <h3 class="heading">Kingdom</h3>
-                        <p class="card__data card__data--key card__data--accent"><a
-                                href="/es/search?taxonomies=100003&amp;searchType=species"><strong>Animalia</strong></a>
-                        </p>
-                    </div>
-                    <div class="layout-card--thirds__third">
-                        <h3 class="heading">Phylum</h3>
-                        <p class="card__data card__data--key card__data--accent"><a
-                                href="/es/search?taxonomies=100023&amp;searchType=species"><strong>Arthropoda</strong></a>
-                        </p>
-                    </div>
-                    <div class="layout-card--thirds__third">
-                        <h3 class="heading">Class</h3>
-                        <p class="card__data card__data--key card__data--accent"><a
-                                href="/es/search?taxonomies=100071&amp;searchType=species"><strong>Arachnida</strong></a>
-                        </p>
-                    </div>
-                </div>
-                <div class="layout-card--thirds species-taxonomy">
-                    <div class="layout-card--thirds__third">
-                        <h3 class="heading">Order</h3>
-                        <p class="card__data card__data--key card__data--accent"><a
-                                href="/es/search?taxonomies=100348&amp;searchType=species"><strong>Scorpiones</strong></a>
-                        </p>
-                    </div>
-                    <div class="layout-card--thirds__third">
-                        <h3 class="heading">Family</h3>
-                        <p class="card__data card__data--key card__data--accent"><a
-                                href="/es/search?taxonomies=196521&amp;searchType=species"><strong>Buthidae</strong></a>
-                        </p>
-                    </div>
-                    <div class="layout-card--thirds__third">
-                        <h3 class="heading">Genus</h3>
-                        <p class="card__data card__data--key card__data--accent"><a
-                                href="/es/search?taxonomies=21460793&amp;searchType=species"><strong>Lychas</strong></a>
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    <div class="card__summary summary" tabindex="0" role="button" aria-expanded="true"
-                        aria-controls="taxonomy-details">Taxonomy in detail</div>
-                    <div id="taxonomy-details" class="card__details details">
-                        <div class="layout-card--split">
-                            <div class="layout-card--split__minor">
-                                <h4 class="heading">Scientific name</h4>
-                                <p class="card__data card__data--std card__data--accent"><span><em>Lychas braueri</em>
-                                        <em></em><em></em></span></p>
-                            </div>
-                            <div class="layout-card--split__major">
-                                <h4 class="heading">Authority</h4>
-                                <p class="card__data card__data--std card__data--accent">(Kraepelin, 1896)</p>
-                            </div>
-                        </div>
-                        <div class="layout-card--split">
-                            <div class="layout-card--split__minor">
-                                <h4 class="heading">Synonyms</h4>
-                            </div>
-                            <div class="layout-card--split__major">
-                                <h4 class="heading">Common names</h4>
-                                <div>
-                                    <h5 class="text-body u--margin-top-sm">English</h5>
-                                    <p class="card__data card__data--std card__data--accent">Seychelles forest scorpion
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="layout-card--split">
-                            <div class="layout-card--split__minor">
-                                <h4 class="heading">Taxonomic sources</h4>
-                                <div class="text-body"></div>
-                                <h4 class="heading">Identification Information</h4>
-                                <div class="text-body"></div>
-                            </div>
-                            <div class="layout-card--split__major">
-                                <h4 class="heading">Taxonomic notes</h4>
-                                <div class="text-body">The genus <em>Lychas </em>currently includes several species that
-                                    are
-                                    thought to belong to other genera. Accordingly, the relationships of this species
-                                    are
-                                    currently uncertain.</div>
-                                <div class="text-body"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </div>
+    =======
 
-
-
-        <footer th:replace="fragments/footer :: footer"></footer>
 
 
 </body>

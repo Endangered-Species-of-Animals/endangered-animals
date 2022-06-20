@@ -17,7 +17,9 @@ public class SpecieService {
 
     @Transactional
     public void create(Specie dto) {
-        if (specieRepository.existsByName(dto.getName()))
+        if (specieRepository.existsByName(dto.getName()) &&
+        specieRepository.existsByOrder(dto.getOrder()) &&
+        specieRepository.existsByGenus(dto.getGenus()) )
             throw new IllegalArgumentException("Error!");
 
         Specie specie = new Specie();
