@@ -44,6 +44,9 @@
                                         Ingresar
                                     </a>
                                 </li>
+                                <span
+                                    th:text="${session.id != null} ? |${session.email} - ${session.role}| : ''"
+                                    class="text-white"></span>
                                 <li>
                                     <a th:href="@{/auth/sign-up}">
                                         <i class="fa fa-sign-in"></i>
@@ -68,7 +71,7 @@
                 <div class="nav-wrap">
                     <div id="site-logo">
                         <a th:href="@{/}">
-                            <img src="../assets/img/logo.png" alt="Site Logo">
+                            <img th:src="@{/assets/img/LOGO-3.png}" alt="Site Logo">
                         </a>
                     </div>
                     <ul class="tim-nav text-right">
@@ -80,7 +83,7 @@
                                 <li><a th:href="@{/animals}">Lista de animales</a></li>
                                 <li><a th:href="@{/parks}">Lista de reservas</a></li>
                                 <li><a th:href="@{/posts/form}">Crear publicacion</a></li>
-                                <li><a th:href="@{/users/form}">Crear usuario</a></li>
+                                <li><a th:href="@{/users}">Lista de usuarios</a></li>
                                 <li><a th:href="@{/contacts}">Sugerencias de usuario</a></li>
                             </ul>
                         </li>
@@ -97,7 +100,7 @@
 
                         </li>
 
-                        
+
 
                         <!--
                         <li class="menu-item-has-children">
@@ -174,7 +177,7 @@
         <div class="mob-header-inner d-flex justify-content-between">
             <div id="mobile-logo" class="d-flex justify-content-start">
                 <a th:href="@{/}">
-                    <img src="../assets/img/logo.png" alt="Site Logo">
+                    <img th:href="@{/assets/img/logo.png}" alt="Site Logo">
                 </a>
             </div>
 
@@ -248,7 +251,7 @@
                     </ul>
 
                 </li>
-                
+
         </nav>
         <!-- /#moble-search -->
 
@@ -260,7 +263,7 @@
         </ul>
 
         <a th:href="@{/}">
-            <img src="../assets/img/logo.png" alt="Site Logo">
+            <img th:src="@{/assets/img/logo.png}" alt="Site Logo">
         </a>
 
     </div>

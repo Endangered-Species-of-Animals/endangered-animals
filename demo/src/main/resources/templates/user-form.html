@@ -31,26 +31,27 @@
 
             <div class="container">
                 <div>
-                    <form role="form">
-                        <!--th:action="@{/agregar/user/__${action}__}" th:object="${user}" method="post" autocomplete="off" >
-                            <input type="hidden" th:field="*{id}">-->
+                    <form role="form" th:action="@{/auth/register}" th:object="${user}" method="post" autocomplete="off" >
 
+                        <input type="hidden" th:field="*{id}">
                         <div class="form-group">
                             <label for="" style="color: #c7f012">Email</label>
-                            <input class="form-control" id="" placeholder="Email">
+                            <input class="form-control" id="" placeholder="Email" th:field="*{email}">
                         </div>
                         <div class="form-group">
                             <label for="" style="color: #c7f012">Nombre</label>
-                            <input class="form-control" id="" placeholder="Nombre">
+                            <input class="form-control" id="" placeholder="Nombre" th:field="*{name}">
                         </div>
                         <div class="form-group">
                             <label for="" style="color: #c7f012">Apellido</label>
-                            <input class="form-control" id="" placeholder="Apellido">
+                            <input class="form-control" id="" placeholder="Apellido" th:field="*{lastName}">
                         </div>
                         <div class="form-group">
                             <label for="" style="color: #c7f012">Contraseña</label>
-                            <input class="form-control" id="" placeholder="Contraseña">
+                            <input type="password" class="form-control" id="" placeholder="Contraseña" th:field="*{password}">
                         </div>
+
+                        <input type="hidden" th:field="*{role}">
 
                         <div class="container col-md-4" >
                             <form action="?" method="POST">
