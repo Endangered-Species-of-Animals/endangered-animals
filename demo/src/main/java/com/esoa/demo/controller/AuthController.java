@@ -39,7 +39,7 @@ public class AuthController {
 
     @GetMapping("/sign-up")
     public ModelAndView signup(HttpServletRequest request, Principal principal) {
-        ModelAndView mav = new ModelAndView("sign-up-form");
+        ModelAndView mav = new ModelAndView("user-form");
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
 
         if (principal != null) mav.setViewName("redirect:/");
@@ -66,7 +66,7 @@ public class AuthController {
         } catch (IllegalArgumentException e) {
             attributes.addFlashAttribute("user", dto);
             attributes.addFlashAttribute("exception", e.getMessage());
-            redirect.setUrl("/auth/sign-up");
+            redirect.setUrl("/users/form");
         } catch (ServletException e) {
             attributes.addFlashAttribute("error", "Auto login failed");
         }

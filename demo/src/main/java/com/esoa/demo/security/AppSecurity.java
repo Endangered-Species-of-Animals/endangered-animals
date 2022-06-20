@@ -15,7 +15,7 @@ import com.esoa.demo.service.UserService;
 
 
 @Configuration
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class AppSecurity extends WebSecurityConfigurerAdapter {
@@ -38,11 +38,11 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
                     .antMatchers("/**").permitAll()   ///authenticated()
                 .and()
                 .formLogin()
-                    .loginPage("/login")
+                    .loginPage("/auth/login")
                         .loginProcessingUrl("/logincheck")
                         .usernameParameter("email")
-                        .passwordParameter("pwd")
-                        .defaultSuccessUrl("/", false)
+                        .passwordParameter("password")
+                        .defaultSuccessUrl("/", true)
                         .failureUrl("/auth/login?error=true")
                         .permitAll()
                 .and()

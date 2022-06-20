@@ -42,7 +42,7 @@ public class UserService  implements UserDetailsService  {
         if (userRepository.findAll().isEmpty()) user.setRole(Role.ADMIN);
         else user.setRole(dto.getRole());
 
-        //emailService.send(dto.getEmail());    //dependencia de email
+        emailService.send(dto.getEmail());    //dependencia de email
 
         userRepository.save(user);
     }
