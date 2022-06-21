@@ -4,6 +4,8 @@ package com.esoa.demo.controller;
 import com.esoa.demo.entity.Contact;
 import com.esoa.demo.service.ContactService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +25,7 @@ public class ContactController {
 
     private final ContactService contactService;
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ModelAndView getContact(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("contact-table");

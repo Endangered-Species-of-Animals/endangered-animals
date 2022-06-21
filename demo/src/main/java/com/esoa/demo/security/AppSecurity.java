@@ -34,14 +34,12 @@ public class AppSecurity extends WebSecurityConfigurerAdapter {
         // @formatter:off
         http
                 .authorizeRequests()
-                    .antMatchers("/signup", "/auth/register", "/css/*", "/js/*", "/img/*").permitAll()
-                    .antMatchers("/**").permitAll()   ///authenticated()
+                    .antMatchers("/auth/signup","/", "/auth/register", "static/*").permitAll()
+                    .antMatchers("/*").authenticated()
                 .and()
                 .formLogin()
                     .loginPage("/auth/login")
                         .loginProcessingUrl("/logincheck")
-                        .usernameParameter("email")
-                        .passwordParameter("password")
                         .defaultSuccessUrl("/", true)
                         .failureUrl("/auth/login?error=true")
                         .permitAll()

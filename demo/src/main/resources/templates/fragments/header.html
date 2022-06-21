@@ -38,20 +38,25 @@
 
                         <div class="col-md-4">
                             <ul class="user-link nav justify-content-end">
-                                <li>
+                                <li th:if="${session.id == null}">
                                     <a th:href="@{/auth/login}">
                                         <i class="fa fa-user"></i>
                                         Ingresar
                                     </a>
                                 </li>
                                 <span
-                                    th:text="${session.id != null} ? |${session.email} - ${session.role}| : ''"
-                                    class="text-white"></span>
-                                <li>
+                                    th:text="${session.id != null} ? |${session.name} ${session.lastname}| : ''"
+                                    class="text"></span>
+                                <li th:if="${session.id != null}"></li>    
+                                <li th:if="${session.id == null}">
                                     <a th:href="@{/auth/sign-up}">
                                         <i class="fa fa-sign-in"></i>
                                         Registrarse
                                     </a>
+                                </li>
+                                <li th:if="${session.id != null}">
+                                    <a th:href="@{/logout}"><i class="fa fa-sign-in"></i>
+                                        Salir</a>
                                 </li>
                             </ul>
                             <!-- /.user-link -->
@@ -76,7 +81,7 @@
                     </div>
                     <ul class="tim-nav text-right">
                         <li class="menu-item-has-children">
-                            <a href="#">Admin</a>
+                            <a sec:authorize="hasRole('ADMIN')">Admin</a>
 
                             <ul class="sub-menu">
                                 <li><a th:href="@{/species}">Lista de especies</a></li>
@@ -219,7 +224,7 @@
         <nav id="accordian">
             <ul class="accordion-menu">
                 <li>
-                    <a href="#0" class="dropdownlink">Admin</a>
+                    <a sec:authorize="hasRole('ADMIN')" class="dropdownlink">Admin</a>
                     <ul class="submenuItems">
                         <li><a th:href="@{/species}">Lista de especies</a></li>
                         <li><a th:href="@{/animals}">Lista de animales</a></li>

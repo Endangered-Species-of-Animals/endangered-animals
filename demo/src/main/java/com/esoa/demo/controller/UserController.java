@@ -4,6 +4,8 @@ package com.esoa.demo.controller;
 import com.esoa.demo.entity.User;
 import com.esoa.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +26,7 @@ public class UserController {
 
     private final UserService userService;
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ModelAndView getUsers(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("user-table");
@@ -36,7 +38,7 @@ public class UserController {
         return mav;
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/form")
     public ModelAndView getForm(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("user-form");
@@ -53,7 +55,7 @@ public class UserController {
         return mav;
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/form/{id}")
     public ModelAndView getForm(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("user-form");
@@ -62,7 +64,7 @@ public class UserController {
         return mav;
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public RedirectView create(User dto, RedirectAttributes attributes) {
         RedirectView redirect = new RedirectView("/users");
@@ -79,7 +81,7 @@ public class UserController {
         return redirect;
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/update")
     public RedirectView update(User dto, RedirectAttributes attributes) {
         RedirectView redirect = new RedirectView("/users");
@@ -87,13 +89,13 @@ public class UserController {
         attributes.addFlashAttribute("success", "The operation has been carried out successfully");
         return redirect;
     }
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/enable/{id}")
     public RedirectView enable(@PathVariable Integer id) {
         userService.enableById(id);
         return new RedirectView("/users");
     }
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/delete/{id}")
     public RedirectView delete(@PathVariable Integer id) {
         RedirectView redirect = new RedirectView("/users");

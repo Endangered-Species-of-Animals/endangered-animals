@@ -45,7 +45,7 @@
                             <p class="email">staffswiftteam@gmail.com</p>
                         </div>
                         
-                        <a type="submit" th:href="@{/contacts/form}" class="tim-btn-bg brn">Dejanos tu comentario</a>
+                        <a sec:authorize="hasRole('USER')" type="submit" th:href="@{/contacts/form}" class="tim-btn-bg brn">Dejanos tu comentario</a>
 
                     </div>
                 </div>
