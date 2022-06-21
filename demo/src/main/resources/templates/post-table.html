@@ -59,7 +59,7 @@
 								<img th:src="@{/uploads/animals/__${post.animal.image}__}">
 							</div>
 
-							<div class="featire-image" th:if="${post.park != null}">
+							<div class="featire-image wow fadeIn" th:if="${post.park != null}">
 								<img th:src="@{/uploads/parks/__${post.park.image}__}">
 							</div>
 
@@ -77,7 +77,7 @@
 								<a th:href="@{/posts/details/__${post.id}__} " class="tim-btn">Ir a su publicación</a>
 								<!--<td sec:authorize="hasRole('ADMIN')">-->
 								<a th:href="@{/posts/update/__${post.id}__} " class="tim-btn">Editar</a>
-								<a th:href="@{/posts/deleted/__${post.id}__} " class="tim-btn">Eliminar</a>
+								<a th:href="@{/posts/delete/__${post.id}__} " class="tim-btn">Eliminar</a>
 							</div>
 							<!-- /.blog-content -->
 						</div>

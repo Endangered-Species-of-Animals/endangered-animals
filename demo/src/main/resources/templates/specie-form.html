@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 
 <head th:replace="fragments/head :: head"></head>
 
@@ -16,10 +16,10 @@
     <div id="main_content">
 
         
-        <section data-bg-image="../media/background/12.jpg">
+        <section data-bg-image="../../media/background/12.jpg">
             <div class="page-title-wrap" >
                 <div class="page-title-inner">
-                    <hr/>
+                    
                     <br>
                     <h1 class="text-center" style="color: #c7f012">Agregar una especie</h1>
                 </div>
@@ -68,7 +68,7 @@
                                                 placeholder=" Ingrese Género ">
                                         </div>
                                         <br>
-                                        <button type="submit"  class="tim-btn read-btn">Añadir Especie</button>
+                                        <button th:text="${action == 'create' ? 'Crear' : 'Actualizar'}" type="submit"  class="tim-btn read-btn"></button>
                                     </form>
                                     <!-- /.col-md-8 -->
                                     

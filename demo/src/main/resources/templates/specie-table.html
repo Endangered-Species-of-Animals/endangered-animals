@@ -16,43 +16,29 @@
         <section data-bg-image="../media/background/12.jpg">
             <div class="page-title-wrap">
                 <div class="page-title-inner">
-                    <hr />
+                    
                     <br>
                     <h1 class="text-center title" style="color: #c7f012">Lista de Especies</h1>
+                    <a th:href="@{/species/form}" 
+                    class="popup-btn" data-animate="fadeInRight" data-delay="0.9s">Crear Especie</a>
                 </div>
+                
             </div>
-
         </section>
 
         <section class="blog-grid pt__50 pb__50">
 
             <div class="container" >
+                
                 <div class="alert alert-danger alert-dismissible fade show" role="alert"
                 th:if="${species.isEmpty()}">
-                    <div class="row ">
-                        <div class="col-3 text-bottom">
-                            <h5> 
-                                Debe ingresar una 
-                                <a th:href="@{/species/form}">especie</a>
-                            </h5>
-                        </div>
-                    </div>
+                    Debe ingresar una Especie        
                 </div>
 
-                
-                <div class="" style="padding-bottom: 10px;">
-                    <div th:unless="${species.isEmpty()}" class="">
-                        <div class="">
-                            <a th:href="@{/species/form}" class="tim-btn read-btn">
-                                Crear especies
-                            </a>
-                        </div>
-                    </div>
-                </div>
                 <div class="blog-grid">
                     <div class="row">
                         <div class="col-lg-3 col-md-6" th:each="specie : ${species}">
-                            <div class="blog-post-grid">
+                            <div class="blog-post-grid" th:style="${specie.deleted} ? 'background: #dc3545;' :'' ">
                                 <div class="container">
                                     <div class="card-body text-center">
                                         <h5 class="card-title" th:text="${specie.name}" style="color: #c7f012"></h5>
@@ -86,8 +72,9 @@
                                     </ul>
                                     <!--<td sec:authorize="hasRole('ADMIN')">-->
                                     <div class="row" style="padding-top: 5px;">
+                                        
                                         <div style="padding-right: 15px;padding-left: 15px;">
-                                            <a th:href="@{/species/update/__${specie.id}__} " class="tim-btn read-btn">Editar</a>
+                                            <a th:href="@{/species/form/__${specie.id}__} " class="tim-btn read-btn">Editar</a>
                                         </div>
                                         <div style="padding-left: 5px;">
                                             <form th:action="${specie.deleted} ? @{/species/enable/__${specie.id}__} : @{/species/delete/__${specie.id}__}"
@@ -96,8 +83,8 @@
                                                 class="tim-btn read-btn" type="submit">
                                                 </button>
                                             </form>
-                                            
                                         </div>
+
                                     </div>
                                     
                                 </div>
@@ -115,10 +102,6 @@
 
     </div>
     <footer th:replace="fragments/footer :: footer"></footer>
-
-    =======
-
-
 
 </body>
 

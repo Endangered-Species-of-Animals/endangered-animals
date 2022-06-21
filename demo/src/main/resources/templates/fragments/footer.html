@@ -45,71 +45,37 @@
                             <p class="email">staffswiftteam@gmail.com</p>
                         </div>
                         
-                            
-                        
+                        <a type="submit" th:href="@{/contacts/form}" class="tim-btn-bg brn">Dejanos tu comentario</a>
 
-                            <a type="submit" th:href="@{/contacts/form}" class="tim-btn-bg brn">Dejanos tu comentario</a>
-
-                        
                     </div>
-                    <!-- /.top-game -->
                 </div>
-                <!-- /.col-lg-3 col-md-4 -->
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /.container -->
-
     </div>
 
     <div class="container">
         <div class="copy-right">
-            <p>DESARROLLADORES <a href="http://themeim.com" target="_blank">State Wide Integrated Fauna Team</a>
+            <p>DESARROLLADORES <a th:href="@{/}" target="_blank">State Wide Integrated Fauna Team</a>
                 SWIFT-TEAM - EGG EDUCATION</p>
         </div>
-        <!-- /.container -->
     </div>
 
-
-    <div class="footer-menu-wrap">
-        <div class="container">
-            <a href="index.html" class="footer-logo">
-                <img src="../assets/img/logo.png" alt="">
-            </a>
-
-            <ul class="footer-social-link">
-                <li class="fb-bg"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li class="in-bg"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li class="tw-bg"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li class="gp-bg"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            </ul>
-         <!-- /.footer-menu -->
-        </div>
-        <!-- /.container -->
-    </div>
-    <!-- /.footer-menu -->
-
-
-    
-    <!-- /#site -->
-
-    <!-- Dependency Scripts -->
-    <script src="../../dependencies/popper.js/popper.min.js"></script>
-    <script src="../../dependencies/jquery/jquery.min.js"></script>
-    <script src="../../dependencies/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../dependencies/swiper/js/swiper.min.js"></script>
-    <script src="../../dependencies/swiperRunner/swiperRunner.min.js"></script>
-    <script src="../../dependencies/slick-carousel/js/slick.min.js"></script>
-    <script src="../../dependencies/magnific-popup/js/jquery.magnific-popup.min.js"></script>
-    <script src="../../dependencies/jquery-ui/jquery-ui.min.js"></script>
-    <script src="../../dependencies/jquery-animated-headlines/js/jquery.animatedheadline.min.js"></script>
-    <script src="../../dependencies/jquery.countdown/jquery.countdown.min.js"></script>
-    <script src="../../dependencies/countUp.js/js/countUp.min.js"></script>
-    <script src="../../dependencies/jquery.appear.bas2k/jquery.appear.js"></script>
-    <script src="../../dependencies/jquery.ripples/jquery.ripples.js"></script>
-    <script src="../../dependencies/wow/js/wow.min.js"></script>
+    <script th:src="@{/dependencies/popper.js/popper.min.js}"></script>
+    <script th:src="@{/dependencies/jquery/jquery.min.js}"></script>
+    <script th:src="@{/dependencies/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/dependencies/swiper/js/swiper.min.js}"></script>
+    <script th:src="@{/dependencies/swiperRunner/swiperRunner.min.js}"></script>
+    <script th:src="@{/dependencies/slick-carousel/js/slick.min.js}"></script>
+    <script th:src="@{/dependencies/magnific-popup/js/jquery.magnific-popup.min.js}"></script>
+    <script th:src="@{/dependencies/jquery-ui/jquery-ui.min.js}"></script>
+    <script th:src="@{/dependencies/jquery-animated-headlines/js/jquery.animatedheadline.min.js}"></script>
+    <script th:src="@{/dependencies/jquery.countdown/jquery.countdown.min.js}"></script>
+    <script th:src="@{/dependencies/countUp.js/js/countUp.min.js}"></script>
+    <script th:src="@{/dependencies/jquery.appear.bas2k/jquery.appear.js}"></script>
+    <script th:src="@{/dependencies/jquery.ripples/jquery.ripples.js}"></script>
+    <script th:src="@{/dependencies/wow/js/wow.min.js}"></script>
 
     <!-- Site Scripts -->
-    <script src="../../assets/js/app.js"></script>
+    <script th:src="@{/assets/js/app.js}"></script>
 
 </footer>

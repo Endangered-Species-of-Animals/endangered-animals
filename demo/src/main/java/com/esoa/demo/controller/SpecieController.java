@@ -1,14 +1,11 @@
 
 package com.esoa.demo.controller;
 
-import com.esoa.demo.entity.Animal;
 import com.esoa.demo.entity.Specie;
-import com.esoa.demo.service.AnimalService;
 import com.esoa.demo.service.SpecieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;

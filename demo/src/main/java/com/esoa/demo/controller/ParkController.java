@@ -75,9 +75,9 @@ public class ParkController {
 
 //    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/update")
-    public RedirectView update(Park dto, RedirectAttributes attributes) {
+    public RedirectView update(Park dto, RedirectAttributes attributes, @RequestParam(required = false) MultipartFile photo) {
         RedirectView redirect = new RedirectView("/parks");
-        parkService.update(dto);
+        parkService.update(dto, photo);
         attributes.addFlashAttribute("success", "The operation has been carried out successfully");
         return redirect;
     }

@@ -11,6 +11,7 @@ import static javax.servlet.RequestDispatcher.ERROR_STATUS_CODE;
 
 @Controller
 public class MyErrorController implements ErrorController {
+    
     @RequestMapping("/error")
     public ModelAndView handleError(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("error");
@@ -35,5 +36,7 @@ public class MyErrorController implements ErrorController {
         mav.addObject("status", status);
         return mav;
     }
+
+    
 }
 

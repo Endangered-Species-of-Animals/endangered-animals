@@ -7,52 +7,26 @@
 
 <body class="strategy-zoombie" data-bg-image="media/blog/57.jpg" data-style="default">
 
-	<div id="loader-wrapper">
-		<div class="loader">
-			<div class="loader-inner"></div>
-			<div class="loader-inner"></div>
-			<div class="loader-inner"></div>
-			<div class="loader-inner"></div>
-		</div>
-	</div>
-
 	<a href="#main_content" data-type="section-switch" class="return-to-top back-top"><i
 			class="fa fa-chevron-up"></i></a>
 
 	<div id="main_content">
 
-
-
 		<header th:replace="fragments/header :: header"></header>
 
+		<section data-bg-image="../../media/background/15.jpg">
+			<div class="page-title-wrap">
+				<div class="page-title-inner">
+					<br>
+					<h1 class="text-center" style="color: #c7f012">Agregar una reserva</h1>
 
-
-		<!--=========================-->
-		<!--=        Banner         =-->
-		<!--=========================-->
-		<section id="page-header" data-bg-image="media/banner/19.jpg">
-			<div class="container">
-				<div class="page-title-wrap">
-					<div class="page-title-inner">
-						<h1></h1>
-						<h3>CARGAR ANIMAL</h3>
-						<span class="delemitter" data-bg-image="media/banner/s1.png"></span>
-					</div>
-					<!-- /.page-title-inner -->
 				</div>
-				<!-- /.page-title-wrap -->
 			</div>
-			<!-- /.container -->
+
 		</section>
-		<!-- /#page-header -->
 
 
-
-
-		<!--==============================-->
-		<!--=        Game Review         =-->
-		<!--==============================-->
-		<section id="footer-three" class="pt__50 pb__50">
+		<section class="blog-grid pt__50 pb__50">
 
 			<div class="container">
 				<div>
@@ -67,17 +41,28 @@
 						</div>
 
 						<div class="mb-3">
-							<label for="kingdom" class="form-label" style="color: #c7f012"> Locacion </label>
+							<label for="kingdom" class="form-label" style="color: #c7f012"> Ubicación </label>
 							<input type="text" class="form-control" id="formGroupExampleInput" th:field="*{location}"
 								placeholder=" Ubicación de la Reserva ">
 						</div>
 						<div class="form-group">
+							<div class="">
+								<div>
+									<iframe
+									src="https://maps.google.com/maps?q=Misiones,%20Argentina&t=k&z=7&ie=UTF8&iwloc=&output=embed"
+									width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+									referrerpolicy="no-referrer-when-downgrade"></iframe>
+									<br>
+									<!-- ver alguna manera de que te tome la posicion-->
+								</div>
+							</div>
+							
 							<label for="exampleFormControlTextarea1" style="color: #c7f012">Posición</label>
 							<input type="text" class="form-control" id="formGroupExampleInput" th:field="*{position}"
 								placeholder=" Posición de la Reserva ">
 						</div>
 						<div class="form-group">
-							<label for="exampleFormControlTextarea1" style="color: #c7f012">Descripcion</label>
+							<label for="exampleFormControlTextarea1" style="color: #c7f012">Descripción</label>
 							<textarea class="form-control" id="exampleFormControlTextarea1" th:field="*{description}"
 								rows="3"></textarea>
 						</div>
@@ -87,28 +72,17 @@
 								placeholder=" Link de la Reserva ">
 						</div>
 						<div class="form-group">
-							<label for="photo" style="color: #c7f012" >Cargar Imagen</label>
-							<input  type="file" name="photo" accept="image/*">
+							<label for="photo" style="color: #c7f012">Cargar Imagen</label>
+							<input type="file" name="photo" accept="image/*">
 						</div>
-
-						<!--<div>
-							<label for="autor" style="color: #c7f012">Seleccione Categoria</label>
-
-							<select class="form-select" id="">
-								<option>
-								</option>
-
-							</select>
-						</div>-->
-
-						<button type="submit" class="btn btn-default">Cargar Posteo</button>
+						<input type="hidden" th:field="*{dischargeDate}">
+						<button th:text="${action == 'create' ? 'Crear' : 'Actualizar'}" type="submit"  class="tim-btn read-btn">Añadir Especie</button>
 					</form>
 				</div>
 			</div>
 
 
 		</section>
-
 
 		<footer th:replace="fragments/footer :: footer"></footer>
 

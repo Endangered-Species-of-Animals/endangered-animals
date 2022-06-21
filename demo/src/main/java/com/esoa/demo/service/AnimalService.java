@@ -53,7 +53,7 @@ public class AnimalService {
     }
 
     @Transactional
-    public void update(Animal dto){
+    public void update(Animal dto, MultipartFile photo){
         
         Animal animal = animalRepository.findById(dto.getId()).get();
     
@@ -62,8 +62,21 @@ public class AnimalService {
         animal.setCategory(dto.getCategory());
         animal.setScientificName(dto.getScientificName());
         animal.setSpecie(dto.getSpecie());
-        animal.setDeleted(false);
+        animal.setDeleted(dto.isDeleted());
+        if (!photo.isEmpty()){
+            Path directoryImage = Paths.get("demo//src//main//resources//static//uploads/animals");
+            String rutaAbsoluta = directoryImage.toFile().getAbsolutePath();
 
+            try {
+                byte[] bytesImg = photo.getBytes();
+                Path rutaCompleta = Paths.get(rutaAbsoluta + "//"+ photo.getOriginalFilename());
+                Files.write(rutaCompleta, bytesImg);
+                animal.setImage(photo.getOriginalFilename());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
         animalRepository.save(animal);
 
     }
@@ -79,7 +92,7 @@ public class AnimalService {
     }
 
    
-    @Transactional(readOnly = true)
+    @Transactional
     public void enableById(Integer id){
         animalRepository.enableById(id);  
     }

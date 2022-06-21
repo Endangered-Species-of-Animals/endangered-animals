@@ -49,12 +49,9 @@ public class AnimalController {
         } else {
             mav.addObject("animal", new Animal());
         }
+
         mav.addObject("species", specieService.getAll());
         mav.addObject("action", "create");
-
-
-
-        
         return mav;
     }
 //    @PreAuthorize("hasRole('ADMIN')")
@@ -62,6 +59,8 @@ public class AnimalController {
     public ModelAndView getParkForm(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("animal-form");
         mav.addObject("animal", animalService.getById(id));
+
+        mav.addObject("species", specieService.getAll());
         mav.addObject("action", "update");
         return mav;
     }
@@ -85,9 +84,9 @@ public class AnimalController {
 
 //    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/update")
-    public RedirectView update(Animal dto, RedirectAttributes attributes) {
+    public RedirectView update(Animal dto,@RequestParam(required = false) MultipartFile photo, RedirectAttributes attributes) {
         RedirectView redirect = new RedirectView("/animals");
-        animalService.update(dto);
+        animalService.update(dto,photo);
         attributes.addFlashAttribute("success", "The operation has been carried out successfully");
         return redirect;
     }
