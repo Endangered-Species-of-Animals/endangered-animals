@@ -16,7 +16,7 @@ public interface ParkRepository extends JpaRepository<Park,Integer> {
     boolean existsByNameAndDescription(String name, String description);
 
     @Modifying
-    @Query("UPDATE Park a SET a.deleted = false WHERE a.id = ?1")
+    @Query("UPDATE Park s SET s.deleted = false WHERE s.id = ?1")
     void enableById(Integer id);
 
     @Query(value = "SELECT * FROM park s ORDER BY park_name ASC", nativeQuery = true)

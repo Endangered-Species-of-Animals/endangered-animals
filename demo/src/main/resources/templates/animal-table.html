@@ -5,7 +5,7 @@
 <head th:replace="fragments/head :: head"></head>
 
 
-<body class="strategy-zoombie" data-bg-image="media/blog/57.jpg" data-style="default">
+<body data-style="default">
 
     <header th:replace="fragments/header :: header"></header>
 
@@ -17,57 +17,78 @@
         <section data-bg-image="../media/background/12.jpg">
             <div class="page-title-wrap">
                 <div class="page-title-inner">
-                    <hr />
+                    
                     <br>
                     <h1 class="text-center" style="color: #c7f012">Lista de Animales</h1>
+                    <a th:href="@{/animals/form}" 
+                    class="popup-btn" data-animate="fadeInRight" data-delay="0.9s">Crear Animales</a>
                 </div>
             </div>
 
         </section>
 
-
-
         <section class="blog-grid pt__50 pb__50">
-            <!--th:if="${post.isEmpty()}"-->
             <div class="container">
-                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                
+                <div class="alert alert-info alert-dismissible fade show" role="alert"
+                th:if="${animals.isEmpty()}">
                     Debe ingresar un animal
-                    <a th:href="@{/animals/form}" class="rt-link">Crear animal</a>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div> <!-- th:unless="${post.isEmpty()}"-->
-                <a th:href="@{/animals/form}" class="rt-link">Crear animal.</a>
+                </div>
+
                 <div class="row">
                     <div class="col-lg-4 col-md-6" th:each="animal : ${animals}">
-
-
                         <div class="blog-post-grid">
-
                             <div class="featire-image">
                                 <img th:src="@{/uploads/animals/__${animal.image}__}">
                             </div>
-
-
-                            <div class="post-type-icon"><i class="fa fa-picture-o"></i></div>
-
-                            <div class="blog-content">
-
-                                <h3 th:text="${animal.name}" class="blog-title"></h3>
-                                <h3 th:text="${animal.scientificName}"></h3>
-                                <h3 th:text="${animal.category}"></h3>
-
-                                <!--<td sec:authorize="hasRole('ADMIN')">-->
-                                <a th:href="@{/animals/update/__${animal.id}__} " class="tim-btn">Editar</a>
-                                    <a th:href="@{/animals/deleted/__${animal.id}__} " class="tim-btn">Eliminar</a>
+                            
+                            <div class="post-type-icon">
+                                <a th:text="${animal.category}"></a>
                             </div>
-                            <!-- /.blog-content -->
+                            
+                            <div class="blog-content">
+                                <div class="row align-items-center blog-meta ">
+                                    <div class="col">
+                                        
+                                    </div>
+                                    <div class="col-2">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <div class="col-3 px-0">
+                                        <a th:text="${animal.dischargeDate}"></a>
+                                    </div>
+                                </div>
+                                <h3 class="blog-title ">
+                                    Nombre: 
+                                    <label th:text="${animal.name}"></label>
+                                </h3>
+                                <label>
+                                    Nombre cientifico:
+                                    <label th:text="${animal.scientificName}"></label>
+                                </label>
+                                
+                                
+                            </div>
+                            <!--<td sec:authorize="hasRole('ADMIN')">-->
+                                <div class="row justify-content-end">
+                                    <div class="col text-center">
+                                        <a th:href="@{/animals/form/__${animal.id}__} " class="tim-btn read-btn">Editar</a>
+                                    </div>
+                                    <div class="col">
+                                        <form th:action="${animal.deleted} ? @{/animals/enable/__${animal.id}__} : @{/animals/delete/__${animal.id}__}"
+                                        method="post">
+                                            <button th:text="${animal.deleted} ? 'Dar de Alta' : 'Dar de Baja'" 
+                                            class="tim-btn read-btn" type="submit">
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                            
                         </div>
-                        <!-- /.blog-post-grid -->
-
-                        <!-- /.col-lg-4 col-md-6 -->
-
-
                     </div>
-
+                </div>
+            </div>
         </section>
         <!-- /#game-review -->
     </div>

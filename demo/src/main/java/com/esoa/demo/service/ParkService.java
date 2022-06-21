@@ -4,6 +4,7 @@ package com.esoa.demo.service;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -32,6 +33,7 @@ public class ParkService {
         park.setPosition(dto.getPosition());
         park.setDescription(dto.getDescription());
         park.setLink(dto.getLink());
+        park.setDischargeDate(LocalDate.now());
         park.setDeleted(false);
         if (!photo.isEmpty()){
             Path directoryImage = Paths.get("demo//src//main//resources//static//uploads/parks");
@@ -53,15 +55,30 @@ public class ParkService {
     }
 
     @Transactional
-    public void update(Park dto){
-
+    public void update(Park dto, MultipartFile photo){
+        
         Park park = parkRepository.findById(dto.getId()).get();
         park.setName(dto.getName());
         park.setLocation(dto.getLocation());
         park.setPosition(dto.getPosition());
         park.setDescription(dto.getDescription());
         park.setLink(dto.getLink());
+        park.setDischargeDate(dto.getDischargeDate());
+        park.setDeleted(dto.isDeleted());
+        if (!photo.isEmpty()){
+            Path directoryImage = Paths.get("demo//src//main//resources//static//uploads/parks");
+            String rutaAbsoluta = directoryImage.toFile().getAbsolutePath();
 
+            try {
+                byte[] bytesImg = photo.getBytes();
+                Path rutaCompleta = Paths.get(rutaAbsoluta + "//"+ photo.getOriginalFilename());
+                Files.write(rutaCompleta, bytesImg);
+                park.setImage(photo.getOriginalFilename());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
         parkRepository.save(park);
 
     }
@@ -77,7 +94,7 @@ public class ParkService {
     }
 
    
-    @Transactional(readOnly = true)
+    @Transactional
     public void enableById(Integer id){
         parkRepository.enableById(id);   
     }

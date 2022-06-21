@@ -12,6 +12,6 @@ public interface AnimalRepository extends JpaRepository<Animal,Integer> {
     boolean existsByNameAndDescription(String name, String description);
 
     @Modifying
-    @Query("UPDATE Park a SET a.deleted = false WHERE a.id = ?1")
+    @Query("UPDATE Animal a SET a.deleted = false WHERE a.id = ?1")
     void enableById(Integer id);
 }
