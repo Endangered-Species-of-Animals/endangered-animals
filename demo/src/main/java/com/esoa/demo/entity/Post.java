@@ -19,8 +19,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Lob
-    @Column(name = "post_introduction", nullable = false)
+    @Column(name = "post_introduction", nullable = false, columnDefinition = "longtext")
     private String introduction;
     @Column(name = "post_title", nullable = false)
     private String title;

@@ -29,8 +29,7 @@ public class Contact {
     private LocalDate dischargeDate;
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
-    @Lob
-    @Column(name = "contact_description", nullable = false)
+    @Column(name = "contact_description", nullable = false, columnDefinition = "longtext")
     private String description;
     @Column(name = "contact_deleted", nullable = false)
     private boolean deleted;

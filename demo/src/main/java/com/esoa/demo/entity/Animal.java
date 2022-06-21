@@ -27,8 +27,7 @@ public class Animal {
     private String name;
     @Column(name = "animal_scientific_name", nullable = false)
     private String scientificName;
-    @Lob
-    @Column(name = "animal_description", nullable = false)
+    @Column(name = "animal_description", nullable = false, columnDefinition = "longtext")
     private String description;
     @Column(name = "animal_discharge_date", nullable = false)
     private LocalDate dischargeDate;

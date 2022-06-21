@@ -29,8 +29,7 @@ public class Park {
     private String position;
     @Column(name = "park_discharge_date", nullable = false)
     private LocalDate dischargeDate;
-    @Lob
-    @Column(name = "park_description")
+    @Column(name = "park_description", columnDefinition = "longtext")
     private String description;
     @Column(name = "park_link", nullable = false)
     private String link;

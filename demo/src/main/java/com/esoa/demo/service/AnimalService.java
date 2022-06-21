@@ -55,7 +55,7 @@ public class AnimalService {
     public void update(Animal dto, MultipartFile photo){
         
         Animal animal = animalRepository.findById(dto.getId()).get();
-    
+        animal.setName(dto.getName());
         animal.setDescription(dto.getDescription());
         animal.setDischargeDate(dto.getDischargeDate());
         animal.setCategory(dto.getCategory());

@@ -40,14 +40,8 @@ public class PostService {
         post.setTitle(dto.getTitle());
         post.setIntroduction(dto.getIntroduction());
         post.setDischargeDate(post.getDischargeDate());
-        
-        if(post.getAnimal()!=null && post.getPark()==null){
-            post.setAnimal(dto.getAnimal());
-        } else if(post.getAnimal()==null && post.getPark()!=null){
-            post.setPark(dto.getPark());
-        } else {
-            
-        }
+        post.setAnimal(dto.getAnimal());
+        post.setPark(dto.getPark());
 
         postRepository.save(post);
     }
