@@ -10,50 +10,36 @@
 	<header th:replace="fragments/header :: header"></header>
 
 	<a href="#main_content" data-type="section-switch" class="return-to-top back-top"><i
-			class="fa fa-chevron-up"></i></a>
+		class="fa fa-chevron-up"></i></a>
 
 	<div id="main_content">
-
-
-
-
-
-
-
-		<!--=========================-->
-		<!--=        Banner         =-->
-		<!--=========================-->
 
 		<section data-bg-image="../media/background/12.jpg">
 			<div class="page-title-wrap">
 				<div class="page-title-inner">
-					<hr />
+					
 					<br>
-					<h1 class="text-center" style="color: #c7f012">Lista de publicaciones</h1>
+					<h1 class="text-center" style="color: #c7f012">Lista de Publicaciones</h1>
+					<a th:href="@{/posts/form}" 
+					class="popup-btn" data-animate="fadeInRight" data-delay="0.9s">Crear Publicaciones</a>
 				</div>
 			</div>
 
 		</section>
 
-
-
-
 		<section class="blog-grid pt__50 pb__50">
-			<!--th:if="${post.isEmpty()}"-->
 			<div class="container">
-				<div class="alert alert-info alert-dismissible fade show" role="alert">
-					Debe ingresar una publicación
-					<a th:href="@{/posts/form}" class="rt-link">Crear publicación.</a>
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div> <!-- th:unless="${post.isEmpty()}"-->
-				<a th:href="@{/posts/form}" class="rt-link">Crear publicación.</a>
+				
+				<div class="alert alert-info alert-dismissible fade show" role="alert"
+                th:if="${posts.isEmpty()}">
+                    Debe ingresar una publicación
+                </div>
+
 				<div class="row">
-					<div class="col-lg-4 col-md-6" th:each="post : ${posts}">
+					<div class="col-4" th:each="post : ${posts}">
 
 
-						<div class="blog-post-grid">
-
-
+						<div class="blog-post-grid" th:style="${post.deleted} ? 'background: #dc3545;' :'' ">
 
 							<div class="featire-image" th:if="${post.animal != null}">
 								<img th:src="@{/uploads/animals/__${post.animal.image}__}">
@@ -66,30 +52,46 @@
 							<div class="post-type-icon"><i class="fa fa-picture-o"></i></div>
 
 							<div class="blog-content">
-								<h3 th:text="${post.DischargeDate}"></h3>
-
-								<h3 th:text="${post.title}" class="blog-title"></h3>
-
-								<p th:text="${post.introduction}">
-
-								</p>
-
-								<a th:href="@{/posts/details/__${post.id}__} " class="tim-btn">Ir a su publicación</a>
-								<!--<td sec:authorize="hasRole('ADMIN')">-->
-								<a th:href="@{/posts/update/__${post.id}__} " class="tim-btn">Editar</a>
-								<a th:href="@{/posts/delete/__${post.id}__} " class="tim-btn">Eliminar</a>
+								<div class="row align-items-center blog-meta ">
+									<div class="col">
+										
+									</div>
+									<div class="col-2">
+										<i class="fa fa-calendar"></i>
+									</div>
+									<div class="col-3 px-0">
+										<a th:text="${post.DischargeDate}"></a>
+									</div>
+								</div>
+								<h3 class="blog-title" th:text="${post.title}"></h3>
+								
+								<p th:text="${post.introduction}" ></p>
+																
 							</div>
-							<!-- /.blog-content -->
+							<div>
+								<div class="row">
+									<div class="col-5 px-4 text-center">
+										<a th:href="@{/posts/detail/__${post.id}__}" class="tim-btn read-btn">Publicación</a>
+									</div>
+									<div class="col-3 px-0 text-left">
+										<a th:href="@{/posts/form/__${post.id}__}" class="tim-btn read-btn">Editar</a>
+									</div>
+									<div class="col px-0 text-left align-middle">
+										<form th:action="${post.deleted} ? @{/posts/enable/__${post.id}__} : @{/posts/delete/__${post.id}__}"
+										method="post">
+											<button th:text="${post.deleted} ? 'Dar Alta' : 'Dar Baja'" 
+											class="tim-btn read-btn" type="submit">
+											</button>
+										</form>
+									</div>
+								</div>
+							</div>
 						</div>
-						<!-- /.blog-post-grid -->
-
-						<!-- /.col-lg-4 col-md-6 -->
-
 
 					</div>
 
 		</section>
-		<!-- /#game-review -->
+
 	</div>
 	<footer th:replace="fragments/footer :: footer"></footer>
 </body>

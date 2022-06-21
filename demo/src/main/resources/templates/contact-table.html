@@ -5,7 +5,7 @@
 <head th:replace="fragments/head :: head"></head>
 
 
-<body class="strategy-zoombie" data-bg-image="media/blog/57.jpg" data-style="default">
+<body data-style="default">
 
     <header th:replace="fragments/header :: header"></header>
 
@@ -27,29 +27,27 @@
 
 
         <section class="blog-grid pt__50 pb__50">
-            <!--th:if="${post.isEmpty()}"-->
             <div class="container">
-                <div class="row" th:each="contact : ${contacts}">
+                <div class="blog-post-grid" th:each="contact : ${contacts}">
+                    <div class="align-items-center">
+                        <div class="row align-items-center">
+                            <div class="col-10 px-5 pt-3">
+                                <h3 th:text="${contact.title}" class="blog-title"></h3>
+                            </div>
+                            <label class="col-2 text-center" th:text="${contact.DischargeDate}"></label>
+                            <!--
+                            <label class="col-12 text-left px-5" th:text="| ${contact.user.name} ${contact.user.lastName} |"></label>
+                            -->
+                            
+                            <label class="col-12 text-left px-5" th:text="${contact.description}"></label>
 
-
-                    <div class="blog-post-grid">
-                        <h3 th:text="${contact.title}" class="blog-title"></h3>
-                        <h3 th:text="${contact.DischargeDate}"></h3>
-                        <!--<h3 th:text="${contact.user.name}"></h3>-->
-                        <h3 th:text="${contact.description}"></h3>
-
+                        </div>
                     </div>
-                    <!-- /.blog-content -->
                 </div>
-                <!-- /.blog-post-grid -->
-
-                <!-- /.col-lg-4 col-md-6 -->
-
 
             </div>
 
         </section>
-        <!-- /#game-review -->
     </div>
     <footer th:replace="fragments/footer :: footer"></footer>
 </body>

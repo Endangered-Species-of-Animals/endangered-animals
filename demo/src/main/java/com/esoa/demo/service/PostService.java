@@ -37,13 +37,17 @@ public class PostService {
     public void update(Post dto) {
 
         Post post = postRepository.findById(dto.getId()).get();
+        post.setTitle(dto.getTitle());
         post.setIntroduction(dto.getIntroduction());
-        post.setDischargeDate(LocalDate.now());
-//if
-        post.setAnimal(dto.getAnimal());
-//if
-        post.setPark(dto.getPark());
-//if
+        post.setDischargeDate(post.getDischargeDate());
+        
+        if(post.getAnimal()!=null && post.getPark()==null){
+            post.setAnimal(dto.getAnimal());
+        } else if(post.getAnimal()==null && post.getPark()!=null){
+            post.setPark(dto.getPark());
+        } else {
+            
+        }
 
         postRepository.save(post);
     }

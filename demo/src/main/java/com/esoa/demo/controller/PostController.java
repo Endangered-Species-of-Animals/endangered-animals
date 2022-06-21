@@ -8,7 +8,6 @@ import com.esoa.demo.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
@@ -57,6 +56,8 @@ public class PostController {
     public ModelAndView getPostForm(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("post-form");
         mav.addObject("post", postService.getById(id));
+        mav.addObject("animals",animalService.getAll());
+        mav.addObject("parks",parkService.getAll());
         mav.addObject("action", "update");
         return mav;
     }

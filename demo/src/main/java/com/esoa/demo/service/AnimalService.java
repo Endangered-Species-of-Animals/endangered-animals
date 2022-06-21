@@ -17,7 +17,6 @@ import lombok.RequiredArgsConstructor;
 public class AnimalService {
 
     private final AnimalRepository animalRepository;
-    private final ImageAnimalService imageAnimalService;
 
 
     @Transactional

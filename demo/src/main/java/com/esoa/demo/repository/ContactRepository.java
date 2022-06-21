@@ -1,7 +1,6 @@
 package com.esoa.demo.repository;
 
 import com.esoa.demo.entity.Contact;
-import com.esoa.demo.entity.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

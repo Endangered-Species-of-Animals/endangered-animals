@@ -2,7 +2,6 @@
 package com.esoa.demo.controller;
 
 import com.esoa.demo.entity.Animal;
-import com.esoa.demo.entity.Park;
 import com.esoa.demo.service.AnimalService;
 import com.esoa.demo.service.SpecieService;
 

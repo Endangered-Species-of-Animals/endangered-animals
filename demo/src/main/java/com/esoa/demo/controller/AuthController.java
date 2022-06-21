@@ -52,7 +52,7 @@ public class AuthController {
             user.setRole(Role.USER);
             mav.addObject("user", user);
         }
-
+        mav.addObject("action", "create");
         return mav;
     }
 

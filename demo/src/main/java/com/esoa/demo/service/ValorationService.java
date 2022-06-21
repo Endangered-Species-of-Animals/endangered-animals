@@ -1,7 +1,5 @@
 package com.esoa.demo.service;
 
-import com.esoa.demo.entity.Post;
-import com.esoa.demo.entity.Specie;
 import com.esoa.demo.entity.User;
 import com.esoa.demo.entity.Valoration;
 import com.esoa.demo.repository.ValorationRepository;

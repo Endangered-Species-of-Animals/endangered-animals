@@ -20,7 +20,6 @@ import lombok.RequiredArgsConstructor;
 public class ParkService {
 
     private final ParkRepository parkRepository;
-    private final ImageParkService imageParkService;
 
     @Transactional
     public void create(Park dto, MultipartFile photo){

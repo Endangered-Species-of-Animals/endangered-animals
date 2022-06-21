@@ -37,39 +37,40 @@
 
                 <div class="row">
                     <div class="col-lg-4 col-md-6" th:each="animal : ${animals}">
-                        <div class="blog-post-grid">
-                            <div class="featire-image">
-                                <img th:src="@{/uploads/animals/__${animal.image}__}">
-                            </div>
-                            
-                            <div class="post-type-icon">
-                                <a th:text="${animal.category}"></a>
-                            </div>
-                            
-                            <div class="blog-content">
-                                <div class="row align-items-center blog-meta ">
-                                    <div class="col">
-                                        
-                                    </div>
-                                    <div class="col-2">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <div class="col-3 px-0">
-                                        <a th:text="${animal.dischargeDate}"></a>
-                                    </div>
+                        <div>
+                            <div class="blog-post-grid" th:style="${animal.deleted} ? 'background: #dc3545;' :'' ">
+                                <div class="featire-image">
+                                    <img th:src="@{/uploads/animals/__${animal.image}__}">
                                 </div>
-                                <h3 class="blog-title ">
-                                    Nombre: 
-                                    <label th:text="${animal.name}"></label>
-                                </h3>
-                                <label>
-                                    Nombre cientifico:
-                                    <label th:text="${animal.scientificName}"></label>
-                                </label>
                                 
+                                <div class="post-type-icon">
+                                    <a th:text="${animal.category}"></a>
+                                </div>
                                 
-                            </div>
-                            <!--<td sec:authorize="hasRole('ADMIN')">-->
+                                <div class="blog-content">
+                                    <div class="row align-items-center blog-meta ">
+                                        <div class="col">
+                                            
+                                        </div>
+                                        <div class="col-2">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <div class="col-3 px-0">
+                                            <a th:text="${animal.dischargeDate}"></a>
+                                        </div>
+                                    </div>
+                                    <h3 class="blog-title ">
+                                        Nombre: 
+                                        <label th:text="${animal.name}"></label>
+                                    </h3>
+                                    <label>
+                                        Nombre cientifico:
+                                        <label th:text="${animal.scientificName}"></label>
+                                    </label>
+                                    
+                                    
+                                </div>
+                                <!--<td sec:authorize="hasRole('ADMIN')">-->
                                 <div class="row justify-content-end">
                                     <div class="col text-center">
                                         <a th:href="@{/animals/form/__${animal.id}__} " class="tim-btn read-btn">Editar</a>
@@ -83,8 +84,9 @@
                                         </form>
                                     </div>
                                 </div>
+                                    
                                 
-                            
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -88,7 +88,7 @@
 						</div>
 
 						</br>
-						<button type="submit" class="btn btn-default">Cargar Posteo</button>
+						<button th:text="${action == 'create' ? 'Crear' : 'Actualizar'}" type="submit"  class="tim-btn read-btn">Añadir Publicación</button>
 					</form>
 				</div>
 			</div>

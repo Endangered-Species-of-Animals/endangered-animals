@@ -43,8 +43,10 @@
                             </div>
                             
                             <div class="post-type-icon">
-                                <a th:href="${park.link}">
-                                    <i class="fa fa-solid fa-link"></i>
+                                <a th:href="@{${park.link}}" target=_blank >
+                                    <i class="fa fa-solid fa-link">
+                                        
+                                    </i>
                                 </a>
                             </div>
                             
@@ -62,9 +64,12 @@
                                 </div>
                                 <h3 class="blog-title" th:text="|Nombre: ${park.name}|"></h3>
                                 <label th:text="|Ubicación: ${park.location}|"></label>
-                                <label th:text="|Donde esta ubicado: ${park.position}  |">
-                                    <i class="fa fa-solid fa-map"></i>
-                                </label>
+                                <div class="row">
+                                    <i id="mapa" class="fa fa-solid fa-map"></i>
+                                    <label th:text="|Donde esta ubicado: mapa ${park.position}  |">                                   
+                                    </label>
+                                    
+                                </div>
                                 
                                 
                             </div>
