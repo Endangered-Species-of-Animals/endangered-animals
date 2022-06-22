@@ -44,6 +44,7 @@
                                         Ingresar
                                     </a>
                                 </li>
+                                
                                 <span th:text="${session.id != null} ? |${session.name} ${session.lastname}| : ''"
                                     class="text"></span>
                                 <li th:if="${session.id != null}"></li>
