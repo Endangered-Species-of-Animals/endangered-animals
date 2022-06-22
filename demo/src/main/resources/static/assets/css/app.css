@@ -1,40 +1,5 @@
 @charset "UTF-8";
-/*!
-  Theme Name: GIO
-  Theme URI: http://www.themeim.com/demo/gio/
-  Author: Theme Im
-  Author URI: http://www.themeim.com/
-  Description: Multiperpose Game HTML Template
-  Version: 1.0.0
-  License: GNU General Public License v2 or later
-  License URI: http://www.gnu.org/licenses/gpl-2.0.html
-  Text Domain: gameisland
-  Tags: game,business,coporate,startup
-  */
-/*--------------------------------------------------------------
-  >>> TABLE OF CONTENTS:
-  ----------------------------------------------------------------
-  # Base
-  # Sections
-    ## Header
-    ## Banner
-    ## Beyond
-    ## Blog
-    ## Video
-    ## Behind
-    ## Live Stream
-    ## Game Strategy
-    ## Add
-    ## Newsletter
-    ## Page Heade
-    ## Feature Game
-    ## Tranding Game
-    ## Logo Carousel
-    ## Overview
-    ## Purchase Game
-    ## Footer
 
-  --------------------------------------------------------------*/
 @font-face {
   font-family: themeim-build-icons;
   src: url("../fonts/themeim-build-icons.eot");
@@ -840,7 +805,7 @@ img {
 }
 
 .fixed .nav-wrap .tim-nav > li {
-  padding: 20px 0;
+  padding: 30px 0;
 }
 
 .fixed .nav-wrap .tim-nav > li.search-btn {
@@ -1185,7 +1150,7 @@ img {
 
 .nav-wrap .tim-nav > li.menu-item-has-children .sub-menu li a {
   color: #fff;
-  padding: 3px 0;
+  padding: 1px 0;
   font-size: 16px;
 }
 
@@ -12173,4 +12138,57 @@ select.orderby {
     width: 100%;
     padding-left: 0px;
   }
+}
+
+
+
+label{ color:grey;}
+
+input[type = "radio"]{ display:none;}
+
+.clasificacion{
+  direction: rtl;/* right to left */
+  unicode-bidi: bidi-override;/* bidi de bidireccional */
+}
+
+label:hover{color:orange;}
+
+label:hover ~ label{color:orange;}
+
+input[type = "radio"]:checked ~ label{color:orange;}
+
+#form {
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+}
+
+#form p {
+  text-align: center;
+}
+
+#form label {
+  font-size: 40px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+  color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+  color: orange;
 }

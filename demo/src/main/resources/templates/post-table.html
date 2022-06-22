@@ -10,18 +10,18 @@
 	<header th:replace="fragments/header :: header"></header>
 
 	<a href="#main_content" data-type="section-switch" class="return-to-top back-top"><i
-		class="fa fa-chevron-up"></i></a>
+			class="fa fa-chevron-up"></i></a>
 
 	<div id="main_content">
 
 		<section data-bg-image="../media/background/12.jpg">
 			<div class="page-title-wrap">
 				<div class="page-title-inner">
-					
+
 					<br>
 					<h1 class="text-center" style="color: #c7f012">Lista de Publicaciones</h1>
-					<a th:href="@{/posts/form}" 
-					class="popup-btn" data-animate="fadeInRight" data-delay="0.9s">Crear Publicaciones</a>
+					<a th:href="@{/posts/form}" class="popup-btn" data-animate="fadeInRight" data-delay="0.9s">Crear
+						Publicaciones</a>
 				</div>
 			</div>
 
@@ -29,11 +29,10 @@
 
 		<section class="blog-grid pt__50 pb__50">
 			<div class="container">
-				
-				<div class="alert alert-info alert-dismissible fade show" role="alert"
-                th:if="${posts.isEmpty()}">
-                    Debe ingresar una publicación
-                </div>
+
+				<div class="alert alert-info alert-dismissible fade show" role="alert" th:if="${posts.isEmpty()}">
+					Debe ingresar una publicación
+				</div>
 
 				<div class="row">
 					<div class="col-4" th:each="post : ${posts}">
@@ -54,7 +53,7 @@
 							<div class="blog-content">
 								<div class="row align-items-center blog-meta ">
 									<div class="col">
-										
+
 									</div>
 									<div class="col-2">
 										<i class="fa fa-calendar"></i>
@@ -64,23 +63,50 @@
 									</div>
 								</div>
 								<h3 class="blog-title" th:text="${post.title}"></h3>
-								
-								<p th:text="${post.introduction}" ></p>
-																
+
+								<p th:text="${post.introduction}"></p>
+
+								<form>
+									<h3 class="clasificacion">
+										<input id="radio1" type="radio" name="estrellas" value="5">
+										<!--
+									  --><label for="radio1">★</label>
+										<!--
+									  --><input id="radio2" type="radio" name="estrellas" value="4">
+										<!--
+									  --><label for="radio2">★</label>
+										<!--
+									  --><input id="radio3" type="radio" name="estrellas" value="3">
+										<!--
+									  --><label for="radio3">★</label>
+										<!--
+									  --><input id="radio4" type="radio" name="estrellas" value="2">
+										<!--
+									  --><label for="radio4">★</label>
+										<!--
+									  --><input id="radio5" type="radio" name="estrellas" value="1">
+										<!--
+									  --><label for="radio5">★</label>
+									</h3>
+								</form>
+
 							</div>
+
 							<div>
 								<div class="row">
 									<div class="col-5 px-4 text-center">
-										<a th:href="@{/posts/detail/__${post.id}__}" class="tim-btn read-btn">Publicación</a>
+										<a th:href="@{/posts/detail/__${post.id}__}"
+											class="tim-btn read-btn">Publicación</a>
 									</div>
 									<div class="col-3 px-0 text-left">
 										<a th:href="@{/posts/form/__${post.id}__}" class="tim-btn read-btn">Editar</a>
 									</div>
 									<div class="col px-0 text-left align-middle">
-										<form th:action="${post.deleted} ? @{/posts/enable/__${post.id}__} : @{/posts/delete/__${post.id}__}"
-										method="post">
-											<button th:text="${post.deleted} ? 'Dar Alta' : 'Dar Baja'" 
-											class="tim-btn read-btn" type="submit">
+										<form
+											th:action="${post.deleted} ? @{/posts/enable/__${post.id}__} : @{/posts/delete/__${post.id}__}"
+											method="post">
+											<button th:text="${post.deleted} ? 'Dar Alta' : 'Dar Baja'"
+												class="tim-btn read-btn" type="submit">
 											</button>
 										</form>
 									</div>
@@ -93,5 +119,8 @@
 		</section>
 
 	</div>
+
 	<footer th:replace="fragments/footer :: footer"></footer>
+	<script src="jquery.js"></script>
+	<script src="jquery.rateyo.js"></script>
 </body>
