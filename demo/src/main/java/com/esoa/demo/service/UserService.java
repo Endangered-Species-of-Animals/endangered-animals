@@ -39,13 +39,10 @@ public class UserService  implements UserDetailsService  {
         user.setName(dto.getName());
         user.setLastName(dto.getLastName());
         user.setPassword(encoder.encode(dto.getPassword()));  //dependencia de seguridad
-
-        if (userRepository.findAll().isEmpty()) user.setRole(Role.ADMIN);
-        else user.setRole(dto.getRole());
-
-        emailService.send(dto.getEmail());    //dependencia de email
-
+        user.setRole(Role.USER);
+        System.out.println(dto.getRole());
         userRepository.save(user);
+        if (userRepository.existsByEmail(user.getEmail())) emailService.send(dto.getEmail());
     }
 
     @Transactional

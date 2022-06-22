@@ -19,8 +19,8 @@ public class EmailService {
 
     private static final String[] SUBJECT = {"Mail de bienvenida",
     "Gracias por tu contacto"};
-    private static final String[] TEXT = {"Bienvenidos. '\n' Muchas gracias por registrarte!",
-    "Agradecemos tus comentario. '\n' Pronto recibiras noticias!"};
+    private static final String[] TEXT = {"Bienvenidos. \n Muchas gracias por registrarte!",
+    "Agradecemos tus comentario. \n Pronto recibiras noticias!"};
     
     @Async
     public void send(String to) {

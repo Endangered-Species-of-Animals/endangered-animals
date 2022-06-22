@@ -2,6 +2,7 @@
 package com.esoa.demo.controller;
 
 import com.esoa.demo.entity.User;
+import com.esoa.demo.enumeration.Role;
 import com.esoa.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 

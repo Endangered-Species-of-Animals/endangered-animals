@@ -98,10 +98,10 @@
 										<a th:href="@{/posts/detail/__${post.id}__}"
 											class="tim-btn read-btn">Publicación</a>
 									</div>
-									<div class="col-3 px-0 text-left">
+									<div class="col-3 px-0 text-left" sec:authorize="hasRole('ADMIN')">
 										<a th:href="@{/posts/form/__${post.id}__}" class="tim-btn read-btn">Editar</a>
 									</div>
-									<div class="col px-0 text-left align-middle">
+									<div class="col px-0 text-left align-middle" sec:authorize="hasRole('ADMIN')">
 										<form
 											th:action="${post.deleted} ? @{/posts/enable/__${post.id}__} : @{/posts/delete/__${post.id}__}"
 											method="post">

@@ -30,8 +30,8 @@ public class AuthController {
     public ModelAndView login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, Principal principal) {
         ModelAndView mav = new ModelAndView("login-form");
 
-        if (error != null) mav.addObject("error", "Invalid email or password");
-        if (logout != null) mav.addObject("logout", "You have successfully exited the platform");
+        if (error != null) mav.addObject("error", "Email o contraseña incorrecta");
+        if (logout != null) mav.addObject("logout", "Saliste de la plataforma");
         if (principal != null) mav.setViewName("redirect:/");
 
         return mav;
