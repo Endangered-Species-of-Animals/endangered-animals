@@ -2,10 +2,16 @@
 package com.esoa.demo.controller;
 
 import com.esoa.demo.entity.Contact;
+import com.esoa.demo.entity.User;
 import com.esoa.demo.service.ContactService;
+import com.esoa.demo.service.UserService;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +30,7 @@ import java.util.Map;
 public class ContactController {
 
     private final ContactService contactService;
+    private final UserService userService;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
@@ -31,17 +38,18 @@ public class ContactController {
         ModelAndView mav = new ModelAndView("contact-table");
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
 
-        if (inputFlashMap != null) mav.addObject("success", inputFlashMap.get("success"));
+        if (inputFlashMap != null)
+            mav.addObject("success", inputFlashMap.get("success"));
 
         mav.addObject("contacts", contactService.getAll());
         return mav;
     }
 
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/form")
     public ModelAndView getContactForm(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("contact-form");
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
-
         if (inputFlashMap != null) {
             mav.addObject("contact", inputFlashMap.get("contact"));
             mav.addObject("exception", inputFlashMap.get("exception"));
@@ -53,12 +61,13 @@ public class ContactController {
         return mav;
     }
 
+    @PreAuthorize("hasRole('USER')")
     @PostMapping("/create")
-    public RedirectView create(Contact dto, RedirectAttributes attributes) {
+    public RedirectView create(Contact dto, RedirectAttributes attributes, Authentication auth) {
         RedirectView redirect = new RedirectView("/");
 
         try {
-            contactService.create(dto);
+            contactService.create(dto, userService.getByEmail(auth.getName()));
             attributes.addFlashAttribute("success", "The operation has been carried out successfully");
         } catch (IllegalArgumentException e) {
             attributes.addFlashAttribute("contact", dto);
@@ -68,4 +77,6 @@ public class ContactController {
 
         return redirect;
     }
+
+    
 }

@@ -10,24 +10,22 @@
 	<a href="#main_content" data-type="section-switch" class="return-to-top back-top"><i class="fa fa-chevron-up"></i></a>
 
 	<div id="main_content">
-
-		<section id="error-page">
-			<div class="container">
+		<div class="section-padding">
+			<section id="error-page" >
 				<div class="error-content">
-					<h1 th:text="${status}" class="mt-3"></h1>
-					<p th:text="${message}"></p>
-					
-					<img th:src="@{/assets/img/404.png}" alt="404">
-					<br>
-					
-					<a th:href="@{/}" class="tim-btn-bg">Back To Home <i class="fa fa-reply"></i></a>
+					<div class="container">
+						<h1 th:text="${status}" class="mt-3"></h1>
+						<p th:text="${message}"></p>
+						<p th:text="${support}"></p>
+						<img th:src="@{/assets/img/404.png}" alt="404">
+						<br>
+						
+						<a th:href="@{/}" class="tim-btn-bg">Volver al inicio <i class="fa fa-reply"></i></a>
+						
+					</div>
 				</div>
-				<!-- /.error-content -->
-			</div>
-			<!-- /.container -->
-		</section>
-		<!-- /#error-page -->
-
+			</section>
+		</div>
 		<footer th:replace="fragments/footer :: footer"></footer>
 		
 

@@ -27,39 +27,49 @@
 
             <div class="container">
                 <div>
-                    <form role="form" th:action="@{/auth/register}" th:object="${user}" method="post" autocomplete="off" >
+                    <div th:if="${error}" th:text="${error}" class="alert alert-danger shadow text-center"></div>
+
+                    <form role="form" th:action="@{/auth/register}" th:object="${user}" 
+                        method="post" autocomplete="off" class="needs-validation" novalidate>
 
                         <input type="hidden" th:field="*{id}">
                         <div class="form-group">
                             <label for="" style="color: #c7f012">Email</label>
-                            <input class="form-control" id="" placeholder="Email" th:field="*{email}">
+                            <input class="form-control" id="" placeholder="Email" th:field="*{email}" required/>
+                            <div class="invalid-feedback">Falta email</div>
                         </div>
                         <div class="form-group">
                             <label for="" style="color: #c7f012">Nombre</label>
-                            <input class="form-control" id="" placeholder="Nombre" th:field="*{name}">
+                            <input class="form-control" id="" placeholder="Nombre" th:field="*{name}" required/>
+                            <div class="invalid-feedback">Falta nombre</div>
                         </div>
                         <div class="form-group">
                             <label for="" style="color: #c7f012">Apellido</label>
-                            <input class="form-control" id="" placeholder="Apellido" th:field="*{lastName}">
+                            <input class="form-control" id="" placeholder="Apellido" th:field="*{lastName}" required/>
+                            <div class="invalid-feedback">Falta apellido</div>
                         </div>
                         <div class="form-group">
                             <label for="" style="color: #c7f012">Contraseña</label>
-                            <input type="password" class="form-control" id="" placeholder="Contraseña" th:field="*{password}">
+                            <input type="password" class="form-control" id="" placeholder="Contraseña" th:field="*{password}" required/>
+                            <div class="invalid-feedback">Falta contraseña</div>
                         </div>
 
                         <input type="hidden" th:field="*{role}">
-
-                        <div class="container col-md-4" >
-                            <form action="?" method="POST">
-                                <div class="g-recaptcha" data-sitekey="6Lfc73YgAAAAAMM4iqcpSuQpVw568KNBXKnW1nGO"></div>
-                            </form>
+                        <div class=" row ">
+                        <div class="col" >
+                            <div class="row justify-content-center align-items-center">
+                                <div id="validationCaptcha" required class=" g-recaptcha"
+                                    data-sitekey="6Lfc73YgAAAAAMM4iqcpSuQpVw568KNBXKnW1nGO">
+                                </div>
+                            
+                            </div>
                             <br>
                             <div class="text-center">
                                 <button th:text="${action == 'create' ? 'Registrarse' : 'Editar Información'}"
-                                type="submit" class="btn btn-default">Registrarse</button>
+                                type="submit" class="tim-btn read-btn">Registrarse</button>
                             </div>
                         </div>
-
+                        </div>
                         
                     </form>
                 </div>
@@ -71,8 +81,8 @@
 </body>
 
 <footer th:replace="fragments/footer :: footer"></footer>
-<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script th:src="@{/js/validation.js}"></script>
 
 </body>
 

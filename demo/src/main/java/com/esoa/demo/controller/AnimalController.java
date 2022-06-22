@@ -6,6 +6,9 @@ import com.esoa.demo.service.AnimalService;
 import com.esoa.demo.service.SpecieService;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,7 +28,7 @@ public class AnimalController {
     private final AnimalService animalService;
     private final SpecieService specieService;
     
-
+    @Secured({ "ADMIN", "USER" })
     @GetMapping
     public ModelAndView getAnimals(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("animal-table");
@@ -36,7 +39,7 @@ public class AnimalController {
         mav.addObject("animals", animalService.getAll());
         return mav;
     }
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/form")
     public ModelAndView getAnimalForm(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("animal-form");
@@ -53,7 +56,7 @@ public class AnimalController {
         mav.addObject("action", "create");
         return mav;
     }
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/form/{id}")
     public ModelAndView getParkForm(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("animal-form");
@@ -64,7 +67,7 @@ public class AnimalController {
         return mav;
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public RedirectView create(Animal dto, @RequestParam(required = false) MultipartFile photo, RedirectAttributes attributes) {
         RedirectView redirect = new RedirectView("/animals");
@@ -81,7 +84,7 @@ public class AnimalController {
         return redirect;
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/update")
     public RedirectView update(Animal dto,@RequestParam(required = false) MultipartFile photo, RedirectAttributes attributes) {
         RedirectView redirect = new RedirectView("/animals");
@@ -90,14 +93,14 @@ public class AnimalController {
         return redirect;
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/enable/{id}")
     public RedirectView enable(@PathVariable Integer id) {
         animalService.enableById(id);
         return new RedirectView("/animals");
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/delete/{id}")
     public RedirectView delete(@PathVariable Integer id) {
         RedirectView redirect = new RedirectView("/animals");

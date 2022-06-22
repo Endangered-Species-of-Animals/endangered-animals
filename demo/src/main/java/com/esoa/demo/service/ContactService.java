@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.esoa.demo.entity.Contact;
+import com.esoa.demo.entity.User;
 import com.esoa.demo.repository.ContactRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -16,24 +17,21 @@ import lombok.RequiredArgsConstructor;
 public class ContactService {
 
     private final ContactRepository contactRepository;
+    private final EmailService emailService;
+
 
     @Transactional
-    public void create(Contact dto) {
-        /*
-         * if (contactRepository.existsByNameAndDescription(dto.getUser(),
-         * dto.getDescription()))
-         * throw new IllegalArgumentException("Error!");
-         */
-
+    public void create(Contact dto,User user) {
+        
         Contact contact = new Contact();
         contact.setTitle(dto.getTitle());
-        contact.setUser(dto.getUser());
+        contact.setUser(user);
         contact.setDescription(dto.getDescription());
         contact.setDischargeDate(LocalDate.now());
         contact.setDeleted(false);
 
         contactRepository.save(contact);
-
+        emailService.sendGreateful(user.getEmail());
     }
 
 

@@ -12,6 +12,7 @@ import static javax.servlet.RequestDispatcher.ERROR_STATUS_CODE;
 @Controller
 public class MyErrorController implements ErrorController {
     
+    
     @RequestMapping("/error")
     public ModelAndView handleError(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("error");
@@ -20,20 +21,22 @@ public class MyErrorController implements ErrorController {
 
         switch (status) {
             case 403:
-                message = "You do not have sufficient permissions to access the requested resource";
+                message = "No tiene los permisos para acceder";
                 break;
             case 404:
-                message = "The requested resource was not found";
+                message = "No se encontro lo que solicitó";
                 break;
             case 500:
-                message = "Internal server error";
+                message = "Error de servidor";
                 break;
             default:
-                message = "Unexpected error";
+                message = "Error inesperado";
         }
 
+        String soporte = "Contacte con nosotros";
         mav.addObject("message", message);
         mav.addObject("status", status);
+        mav.addObject("support", soporte);
         return mav;
     }
 

@@ -4,6 +4,8 @@ package com.esoa.demo.controller;
 import com.esoa.demo.entity.Specie;
 import com.esoa.demo.service.SpecieService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,7 +22,8 @@ import java.util.Map;
 public class SpecieController {
 
     private final SpecieService specieService;
-    //falta rol
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping
     public ModelAndView getSpecies(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("specie-table"); //ver nombre de hmtl
@@ -31,7 +34,7 @@ public class SpecieController {
         mav.addObject("species", specieService.getAll());
         return mav;
     }
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/form")
     public ModelAndView getSpecieForm(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("specie-form");
@@ -47,7 +50,7 @@ public class SpecieController {
         mav.addObject("action", "create");
         return mav;
     }
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/form/{id}")
     public ModelAndView getSpecieForm(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("specie-form");
@@ -56,7 +59,7 @@ public class SpecieController {
         return mav;
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public RedirectView create(Specie dto, RedirectAttributes attributes) {
         RedirectView redirect = new RedirectView("/species");
@@ -73,7 +76,7 @@ public class SpecieController {
         return redirect;
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/update")
     public RedirectView update(Specie dto, RedirectAttributes attributes) {
         RedirectView redirect = new RedirectView("/species");
@@ -82,14 +85,14 @@ public class SpecieController {
         return redirect;
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/enable/{id}")
     public RedirectView enable(@PathVariable Integer id) {
         specieService.enableById(id);
         return new RedirectView("/species");
     }
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/delete/{id}")
     public RedirectView delete(@PathVariable Integer id) {
         RedirectView redirect = new RedirectView("/species");

@@ -5,7 +5,12 @@ import com.esoa.demo.entity.Post;
 import com.esoa.demo.service.AnimalService;
 import com.esoa.demo.service.ParkService;
 import com.esoa.demo.service.PostService;
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,6 +29,8 @@ public class PostController {
     private final PostService postService;
     private final AnimalService animalService;
     private final ParkService parkService;
+
+
     @GetMapping
     public ModelAndView getPost(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("post-table");
@@ -34,7 +41,7 @@ public class PostController {
         mav.addObject("posts", postService.getAll());
         return mav;
     }
-//    @PreAuthorize("hasRole('ADMIN')")
+    @Secured({ "ADMIN", "USER" })
     @GetMapping("/form")
     public ModelAndView getPostForm(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("post-form");
@@ -51,7 +58,8 @@ public class PostController {
         mav.addObject("action", "create");
         return mav;
     }
-    //    @PreAuthorize("hasRole('ADMIN')")
+    
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/form/{id}")
     public ModelAndView getPostForm(@PathVariable Integer id) {
         ModelAndView mav = new ModelAndView("post-form");
@@ -62,7 +70,20 @@ public class PostController {
         return mav;
     }
 
-    //    @PreAuthorize("hasRole('ADMIN')")
+    @Secured({ "ADMIN", "USER" })
+    @GetMapping("/detail/{id}")
+    public ModelAndView getDetails(@PathVariable Integer id){
+        ModelAndView mav = new ModelAndView("post-detail");
+        Post post = new Post();
+        post= postService.getById(id);
+        mav.addObject("post", post);
+        mav.addObject("animal",animalService.getById(post.getAnimal().getId()));
+        mav.addObject("park",parkService.getById(post.getPark().getId()));
+        mav.addObject("action", "detail");
+        return mav;
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
     public RedirectView create(Post dto, RedirectAttributes attributes) {
         RedirectView redirect = new RedirectView("/posts");
@@ -79,7 +100,7 @@ public class PostController {
         return redirect;
     }
 
-    //    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/update")
     public RedirectView update(Post dto, RedirectAttributes attributes) {
         RedirectView redirect = new RedirectView("/posts");
@@ -88,20 +109,22 @@ public class PostController {
         return redirect;
     }
 
-    //    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/enable/{id}")
     public RedirectView enable(@PathVariable Integer id) {
         postService.enableById(id);
         return new RedirectView("/posts");
     }
 
-    //    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/delete/{id}")
     public RedirectView delete(@PathVariable Integer id) {
         RedirectView redirect = new RedirectView("/posts");
         postService.deleteById(id);
         return redirect;
     }
+
+
     //agregar la parte de eliminados
     //agregar el listado
 }

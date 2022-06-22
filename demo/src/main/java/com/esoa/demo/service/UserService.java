@@ -74,6 +74,11 @@ public class UserService  implements UserDetailsService  {
     }
 
     @Transactional(readOnly = true)
+    public User getByEmail(String email) {
+        return userRepository.findByEmail(email).get();
+    }
+
+    @Transactional(readOnly = true)
     public List<User> getAll() {
         return userRepository.findAll();
     }

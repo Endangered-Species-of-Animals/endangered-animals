@@ -1,6 +1,7 @@
 package com.esoa.demo.service;
 
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -16,17 +17,18 @@ public class EmailService {
     @Value("endangered.species.of.animals@gmail.com")
     private String from;
 
-    private static final String SUBJECT = "Welcome email";
-    private static final String TEXT = "Welcome to our page. Thank you for registering!";
-    private static final String COMMENT = "Thank you for contacting us. We will read your comments soon.";
+    private static final String[] SUBJECT = {"Mail de bienvenida",
+    "Gracias por tu contacto"};
+    private static final String[] TEXT = {"Bienvenidos. '\n' Muchas gracias por registrarte!",
+    "Agradecemos tus comentario. '\n' Pronto recibiras noticias!"};
     
     @Async
     public void send(String to) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
         message.setFrom(from);
-        message.setSubject(SUBJECT);
-        message.setText(TEXT);
+        message.setSubject(SUBJECT[0]);
+        message.setText(TEXT[0]);
         sender.send(message);
     }
 
@@ -35,8 +37,8 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
         message.setFrom(from);
-        message.setSubject(SUBJECT);
-        message.setText(COMMENT);
+        message.setSubject(SUBJECT[1]);
+        message.setText(TEXT[1]);
         sender.send(message);
     }
 
