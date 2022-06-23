@@ -41,7 +41,7 @@ public class PostController {
         mav.addObject("posts", postService.getAll());
         return mav;
     }
-    @Secured({ "ADMIN", "USER" })
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/form")
     public ModelAndView getPostForm(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("post-form");
@@ -81,6 +81,7 @@ public class PostController {
         if (post.getAnimal()!=null) mav.addObject("animal",animalService.getById(post.getAnimal().getId()));
         if (post.getPark()!=null) mav.addObject("park",parkService.getById(post.getPark().getId()));
         mav.addObject("action", "detail");
+        mav.addObject("action1", "vote");
         return mav;
     }
 
@@ -126,6 +127,4 @@ public class PostController {
     }
 
 
-    //agregar la parte de eliminados
-    //agregar el listado
 }
