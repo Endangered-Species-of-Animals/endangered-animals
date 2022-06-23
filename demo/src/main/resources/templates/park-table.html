@@ -63,12 +63,20 @@
                                     </div>
                                 </div>
                                 <h3 class="blog-title" th:text="|Nombre: ${park.name}|"></h3>
-                                <label th:text="|Ubicación: ${park.location}|"></label>
-                                <div class="row">
-                                    <i id="mapa" class="fa fa-solid fa-map"></i>
-                                    <label th:text="|Donde esta ubicado: mapa ${park.position}  |">                                   
-                                    </label>
-                                    
+                                <text th:text="|Ubicación: ${park.location}|"></text>
+                                <div class="" >
+                                    <div id="contenedor1">
+                                    <p>
+                                       <text>Donde esta ubicado:
+                                        <a th:href=" ${park.position}" target=_blank>
+                                            <i class="fa fa-solid fa-map pl-2 ">
+                                            
+                                            </i>
+                                        </a>
+                                        
+                                       </text>
+                                    </p>
+                                </div>
                                 </div>
                                 
                                 

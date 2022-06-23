@@ -66,7 +66,7 @@
 						<select th:field=*{specie} class="form-select" id="specie">  
 							<option class="text-center" selected value="" >Especie</option>
 							<option th:each="specie:${species}" 
-								th:text="|${specie.name} - ${specie.family} - ${specie.order}|"
+								th:text="|${specie.name} - ${specie.family} - ${specie.order} - ${specie.genus}|"
 								th:value="${specie.id}"></option>
 							
 						  </select>
