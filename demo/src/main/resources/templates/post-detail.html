@@ -6,28 +6,80 @@
 
 <body>
 
-    <header th:replace="fragments/header :: header"></header>
-    <main>
+    <a href="#main_content" data-type="section-switch" class="return-to-top back-top"><i
+            class="fa fa-chevron-up"></i></a>
+
+    <div id="main_content">
+
+        <header th:replace="fragments/header :: header"></header>
         <section class="single-post">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-9">
+            <br>
+            <div class="full-width mt-5 pt-5 ">
+                <div class="blog-details">
+                    <blockquote>
+                        <h2 class="blog-title" th:text="${post.title}"> </h2>
+                    </blockquote>
+                    <ul class="meta">
+                    </ul>
 
-                        
-                            <h1 class="blog-title" th:text="${post.title}"></h1>
-                        
-                        <div class="blog-details">
+                    <div class="feature-image" th:if="${post.animal != null}">
 
-                        </div>
+                        <img th:src="@{/uploads/animals/__${post.animal.image}__}">
                     </div>
+
+                    <div class="feature-image" th:if="${post.park != null}">
+
+                        <img th:src="@{/uploads/parks/__${post.park.image}__}">
+                    </div>
+                    <br>
+
+                    <p class="blog-title" th:text="${post.introduction}"></p>
+
+                    <p>
+                         Nombre científico: 
+                         <label th:text="${post.animal.scientificName}"></label>
+                    </p>
+                    <p>
+                        Categoria:
+                        <label th:text="${post.animal.category}"></label>
+                    </p>
+                    <p>
+                        Especie:
+                        <label th:text="${post.animal.specie.family}"></label>
+                    </p>
+                    <p>
+                        Phylum:
+                        <label th:text="${post.animal.specie.Phylum}"></label>
+                    </p>
+                    <p>
+                        Género:
+                        <label th:text="${post.animal.specie.genus}"></label>
+                    </p>
+                    <p>
+                        Reino:
+                        <label th:text="${post.animal.specie.kingdom}"></label>
+                    </p>
+                    <p>
+                        Orden:
+                        <label th:text="${post.animal.specie.order}"></label>
+                    </p>
+                    <p>
+                        Descripcion:
+                        <label class=text-justify th:text="${post.animal.description}"></label>
+                    </p>
+
                 </div>
+                <!-- /.blog-details -->
+
             </div>
-        </section>
+            <!-- /.game-tips -->
+    </div>
+    <!-- /.container -->
+    </section>
+    <!-- /.single-post -->
 
-
-    </main>
+    </div>
 </body>
-
 
 <footer th:replace="fragments/footer :: footer"></footer>
 

@@ -77,8 +77,8 @@ public class PostController {
         Post post = new Post();
         post= postService.getById(id);
         mav.addObject("post", post);
-        mav.addObject("animal",animalService.getById(post.getAnimal().getId()));
-        mav.addObject("park",parkService.getById(post.getPark().getId()));
+        if (post.getAnimal()!=null) mav.addObject("animal",animalService.getById(post.getAnimal().getId()));
+        if (post.getPark()!=null) mav.addObject("park",parkService.getById(post.getPark().getId()));
         mav.addObject("action", "detail");
         return mav;
     }
