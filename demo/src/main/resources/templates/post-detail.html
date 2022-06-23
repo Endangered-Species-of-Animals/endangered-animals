@@ -46,7 +46,6 @@
                             <div class=" text-center">
                                     <text>
                                         Especie
-                                        <br>
                                         <label th:text=${post.animal.specie.family}></label>
                                     </text>
                             </div>
@@ -131,7 +130,7 @@
 
         <section id="related-post">
             <div class="container">
-                <h2 class="title">Related Post</h2>
+                <h2 class="title">Otras Publicaciones</h2>
                 <div class="blog-slider">
                     <div class="swiper-container"
                         data-swiper-config='{"loop": true, "speed": 700, "prevButton": "#related-nav-prev", "nextButton": "#related-nav-next", "spaceBetween": 30, "autoplay": 7000, "slidesPerView": 3, "paginationClickable": true, "breakpoints": { "991": { "slidesPerView": 2 },"768": { "slidesPerView": 1 }, "500": { "slidesPerView": 1 }}}'>
@@ -141,6 +140,9 @@
                                 <div class="blog-post-grid">
                                     <div class="featire-image" th:if="${post.animal != null}">
                                         <img th:src="@{/uploads/animals/__${post.animal.image}__}">
+                                    </div>
+                                    <div class="featire-image" th:if="${post.park != null}">
+                                        <img th:src="@{/uploads/parks/__${post.park.image}__}">
                                     </div>
 
 
