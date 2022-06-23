@@ -32,12 +32,12 @@
                         <img th:src="@{/uploads/parks/__${post.park.image}__}">
                     </div>
                     <br>
-
-                    <p class="blog-title" th:text="${post.introduction}"></p>
-
+                    <div id="contenedor2">
+                        <p class="blog-title" th:text="${post.introduction}"></p>
+                    </div>
                     <p>
-                         Nombre científico: 
-                         <label th:text="${post.animal.scientificName}"></label>
+                        Nombre científico:
+                    <p th:text="${post.animal.scientificName}"></p>
                     </p>
                     <p>
                         Categoria:
@@ -63,20 +63,74 @@
                         Orden:
                         <label th:text="${post.animal.specie.order}"></label>
                     </p>
-                    <p>
+                    <div id="contenedor">
                         Descripcion:
-                        <label class=text-justify th:text="${post.animal.description}"></label>
-                    </p>
+
+
+                        <p class="text-justify" th:text="${post.animal.description}"></p>
+
+
+                    </div>
 
                 </div>
                 <!-- /.blog-details -->
 
             </div>
             <!-- /.game-tips -->
+        </section>
+
+        <section id="related-post">
+            <div class="container">
+                <h2 class="title">Related Post</h2>
+                <div class="blog-slider">
+                    <div class="swiper-container"
+                        data-swiper-config='{"loop": true, "speed": 700, "prevButton": "#related-nav-prev", "nextButton": "#related-nav-next", "spaceBetween": 30, "autoplay": 7000, "slidesPerView": 3, "paginationClickable": true, "breakpoints": { "991": { "slidesPerView": 2 },"768": { "slidesPerView": 1 }, "500": { "slidesPerView": 1 }}}'>
+
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" th:each="post : ${listPost}">
+                                <div class="blog-post-grid">
+                                    <div class="featire-image" th:if="${post.animal != null}">
+                                        <img th:src="@{/uploads/animals/__${post.animal.image}__}">
+                                    </div>
+
+
+                                    <div class="post-type-icon"><i class="fa fa-picture-o"></i></div>
+
+                                    <div class="blog-content">
+                                        <ul class="blog-meta">
+
+                                            <li><i class="fa fa-calendar"></i><a th:text="${post.DischargeDate}"></a>
+                                            </li>
+                                        </ul>
+                                        <div id="contenedor1">
+                                            <h3 class="blog-title" th:text="${post.title}"></h3>
+                                        </div>
+                                        <div id="contenedor1">
+                                            <p th:text="${post.introduction}"></p>
+                                        </div>
+                                        <a th:href="@{/posts/detail/__${post.id}__}"
+                                            class="tim-btn read-btn">Publicación</a>
+                                    </div>
+                                    <!-- /.blog-content -->
+
+                                </div>
+                            </div>
+                            <!-- /.blog-post-grid -->
+
+                        </div>
+                    </div>
+                    <!-- Swiper Nav Prev -->
+                    <div id="related-nav-prev" class="slider-nav-prev"><i class="fa fa-angle-left"></i></div>
+                    <!-- Swiper Nav Next -->
+                    <div id="related-nav-next" class="slider-nav-next"><i class="fa fa-angle-right"></i></div>
+
+                </div>
+                <!-- /.container -->
+            </div>
+        </section>
+
     </div>
-    <!-- /.container -->
-    </section>
-    <!-- /.single-post -->
+
 
     </div>
 </body>

@@ -20,7 +20,8 @@
 
 					<br>
 					<h1 class="text-center" style="color: #c7f012">Lista de Publicaciones</h1>
-					<a th:href="@{/posts/form}" class="popup-btn" data-animate="fadeInRight" data-delay="0.9s">Crear
+					<a sec:authorize="hasRole('ADMIN')" th:href="@{/posts/form}" class="popup-btn"
+						data-animate="fadeInRight" data-delay="0.9s">Crear
 						Publicaciones</a>
 				</div>
 			</div>
@@ -62,9 +63,12 @@
 										<a th:text="${post.DischargeDate}"></a>
 									</div>
 								</div>
-								<h3 class="blog-title" th:text="${post.title}"></h3>
-
-								<p th:text="${post.introduction}"></p>
+								<div id="contenedor1">
+									<h3 class="blog-title" th:text="${post.title}"></h3>
+								</div>
+								<div id="contenedor1">
+									<p th:text="${post.introduction}"></p>
+								</div>
 
 								<form>
 									<h3 class="clasificacion">
@@ -115,8 +119,11 @@
 						</div>
 
 					</div>
-
+				</div>
+			</div>
 		</section>
+
+
 
 	</div>
 
